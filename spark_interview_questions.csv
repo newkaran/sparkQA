@@ -74,128 +74,128 @@ id,type,question,answer,options
 15,TrueFalse,WINDOW functions require PARTITION BY.,FALSE,
 15,Scenario,Query needs top 5 sales reps per region. How to implement?,Use `ROW_NUMBER() OVER(PARTITION BY region)`,
 15,MCQ,Which function assigns consecutive ranks without gaps?,DENSE_RANK(),RANK();DENSE_RANK();ROW_NUMBER()
-16	MCQ	What is the primary purpose of coalesce() in Spark?	Reduce partitions without full shuffle	Increase partitions;Reduce partitions;Change data
-16	Fill	To reduce from 1000 to 100 partitions, use __________.	coalesce(100)	
-16	TrueFalse	coalesce() always avoids a full shuffle.	TRUE	
-16	Scenario	Your DataFrame has 200 uneven partitions. How to optimize?	Use repartition(100) for balanced data	
-16	MCQ	Which operation performs a full shuffle?	repartition()	coalesce();repartition();both
-17	MCQ	What is the difference between managed and external tables in Spark?	Managed tables drop data on table deletion	Managed tables control lifecycle;External tables don't;Both
-17	Fill	To create an external table, use __________.	CREATE EXTERNAL TABLE	
-17	TrueFalse	Managed tables are always better for production.	FALSE	
-17	Scenario	You need to share data between Spark and Hive. Which table type?	External table	
-17	MCQ	Where is metadata stored for external tables?	External metastore	Hive metastore;External metastore;Nowhere
-18	MCQ	What is the key advantage of Spark over MapReduce?	In-memory processing	Faster disks;In-memory processing;Better UI
-18	Fill	Spark's __________ API improved performance over RDDs.	DataFrame	
-18	TrueFalse	Spark always runs faster than MapReduce.	FALSE	
-18	Scenario	Your MapReduce job takes 8 hours. How would Spark help?	Use in-memory caching of intermediate data	
-18	MCQ	Which Spark feature reduces disk I/O?	Caching intermediate results	More executors;Caching;Smaller data
-19	MCQ	What is the purpose of Delta Lake's __delta_log folder?	Stores transaction logs and versions	Data files;Transaction logs;Both
-19	Fill	To vacuum Delta Lake files older than 7 days, use __________.	VACUUM RETAIN 7 DAYS	
-19	TrueFalse	Delta_log files can be safely deleted manually.	FALSE	
-19	Scenario	Your Delta table grows too large. How to compact small files?	Run OPTIMIZE command	
-19	MCQ	Which command checks Delta table file statistics?	DESCRIBE DETAIL	SHOW FILES;DESCRIBE DETAIL;LIST FILES
-20	MCQ	What is the primary use case for Kafka Streams?	Real-time stream processing	Batch processing;Real-time streams;Both
-20	Fill	To process Kafka streams in Spark, use __________.	Structured Streaming	
-20	TrueFalse	Kafka Streams requires Spark for processing.	FALSE	
-20	Scenario	You need millisecond-latency processing of clickstream data. Solution?	Kafka Streams with stateful operations	
-20	MCQ	Which library provides exactly-once semantics for Kafka?	Kafka Streams	Spark Streaming;Kafka Streams;Flink
-21	MCQ	What is the difference between UNION and UNION ALL?	UNION removes duplicates	UNION ALL faster;UNION removes duplicates;Same
-21	Fill	To combine datasets keeping duplicates, use __________.	UNION ALL	
-21	TrueFalse	UNION is more expensive than UNION ALL.	TRUE	
-21	Scenario	You need to merge 3 datasets with possible duplicates. Which operation?	UNION ALL + distinct()	
-21	MCQ	Which operation performs deduplication automatically?	UNION	UNION;UNION ALL;Neither
-22	MCQ	What is the purpose of normalization in databases?	Reduce data redundancy	Improve joins;Reduce redundancy;Both
-22	Fill	The 3rd normal form eliminates __________ dependencies.	transitive	
-22	TrueFalse	Denormalization never improves performance.	FALSE	
-22	Scenario	Your queries are slow due to excessive joins. How to optimize?	Consider selective denormalization	
-22	MCQ	Which normal form deals with partial key dependencies?	2NF	1NF;2NF;3NF
-23	MCQ	What is the primary advantage of Parquet over CSV?	Columnar storage for better compression	Smaller size;Columnar storage;Both
-23	Fill	To write a DataFrame in Parquet format, use __________.	df.write.parquet()	
-23	TrueFalse	Parquet is always better than Delta Lake.	FALSE	
-23	Scenario	Your analytics queries only need 2 columns from 100. Best format?	Parquet	
-23	MCQ	Which feature makes Parquet efficient for analytics?	Column pruning	Row slicing;Column pruning;Compression
-24	MCQ	What is the purpose of the NameNode in HDFS?	Manages metadata and file system tree	Stores data;Manages metadata;Both
-24	Fill	If a DataNode fails, __________ replicates its blocks.	NameNode	
-24	TrueFalse	NameNode stores actual file data.	FALSE	
-24	Scenario	Your HDFS cluster has frequent DataNode failures. How to improve?	Increase replication factor	
-24	MCQ	Which HDFS component stores file data?	DataNode	NameNode;DataNode;Both
-25	MCQ	What is the primary use of OLAP systems?	Analytical processing	Transactions;Analytics;Both
-25	Fill	For fast aggregations, use __________ databases.	OLAP	
-25	TrueFalse	OLTP systems optimize for read-heavy workloads.	FALSE	
-25	Scenario	You need to analyze 5 years of sales data. Which system?	OLAP (e.g.	 Snowflake  Redshift)
-25	MCQ	Which database type typically uses star schemas?	OLAP	OLTP;OLAP;Both
-26	MCQ	What is the primary advantage of using Delta Live Tables (DLT)?	Automated pipeline maintenance	Manual tuning;Automated maintenance;Simpler syntax
-26	Fill	To declare a DLT pipeline, use __________ syntax.	CREATE LIVE TABLE	
-26	TrueFalse	DLT pipelines automatically handle schema evolution.	TRUE	
-26	Scenario	Your team needs reliable ETL with minimal manual intervention. Solution?	Implement Delta Live Tables	
-26	MCQ	Which DLT feature helps with data quality?	Expectations	Assertions;Expectations;Validation
-27	MCQ	What is the purpose of tumbling windows in streaming?	Fixed-size	 non-overlapping time intervals Event counting;Fixed intervals;Sliding intervals
-27	Fill	To aggregate 5-minute counts in Spark Streaming, use __________.	window(timeColumn, '5 minutes')	
-27	TrueFalse	Tumbling windows can have overlapping intervals.	FALSE	
-27	Scenario	You need hourly sales totals from a stream. Which window type?	Tumbling window (1 hour)	
-27	MCQ	Which window type allows overlapping intervals?	Sliding window	Tumbling;Sliding;Session
-28	MCQ	What is the key difference between narrow and wide transformations?	Narrow transformations don't require shuffling	Shuffle requirement;Data locality;Both
-28	Fill	Examples of narrow transformations include __________.	filter(), map()	
-28	TrueFalse	reduceByKey() is a narrow transformation.	FALSE	
-28	Scenario	Your Spark job has excessive shuffling. How to optimize?	Replace wide transformations where possible	
-28	MCQ	Which transformation always causes shuffling?	join()	map();filter();join()
-29	MCQ	What is the primary purpose of the Catalyst Optimizer?	Query optimization	Memory management;Query optimization;Network I/O
-29	Fill	To view Spark's optimized query plan, use __________.	EXPLAIN EXTENDED	
-29	TrueFalse	The Catalyst Optimizer works only with RDDs.	FALSE	
-29	Scenario	Your SQL query runs slowly. How to investigate?	Check the optimized physical plan	
-29	MCQ	Which Spark component converts DataFrame operations to optimized RDDs?	Catalyst Optimizer	Spark Core;Catalyst;YARN
-30	MCQ	What is the purpose of Change Data Feed in Delta Lake?	Track row-level changes	Version control;Row-level changes;Both
-30	Fill	To enable Change Data Feed, set __________.	delta.enableChangeDataFeed=true	
-30	TrueFalse	Change Data Feed requires separate storage.	FALSE	
-30	Scenario	You need to identify changed rows since yesterday. Solution?	Query Change Data Feed	
-30	MCQ	Which command reads Change Data Feed?	TABLE_CHANGES	DESCRIBE HISTORY;TABLE_CHANGES;VERSION
-31	MCQ	What is the primary use of mapping data flows in ADF?	Code-free data transformations	Orchestration;Transformations;Monitoring
-31	Fill	To debug a mapping data flow, use __________.	data flow debug mode	
-31	TrueFalse	Mapping data flows run on Spark clusters.	TRUE	
-31	Scenario	Your team needs GUI-based ETL without coding. Solution?	ADF mapping data flows	
-31	MCQ	Which ADF component handles complex transformations?	Mapping data flows	Wrangling flows;Mapping;Both
-32	MCQ	What is the purpose of the medallion architecture?	Data quality progression (bronzeâ†’gold)	Storage tiers;Quality progression;Both
-32	Fill	The __________ layer contains cleansed, business-ready data.	gold	
-32	TrueFalse	All data should skip the silver layer.	FALSE	
-32	Scenario	Your lakehouse has raw	 inconsistent data. How to structure?	Implement medallion architecture
-32	MCQ	Which layer contains raw  unprocessed data?	Bronze 	Bronze;Silver;Gold
-33	MCQ	What is the primary advantage of Spark Structured Streaming?	Unified API for batch and streaming	Lower latency;Unified API;Simpler setup
-33	Fill	To read from Kafka in Structured Streaming, use __________.	readStream.format('kafka')	
-33	TrueFalse	Structured Streaming provides exactly-once semantics.	TRUE	
-33	Scenario	You need to process both historical and real-time data. Solution?	Structured Streaming	
-33	MCQ	Which streaming mode processes data in micro-batches?	Structured Streaming	Kafka Streams;Structured;Flink
-34	MCQ	What is the purpose of the Unity Catalog in Databricks?	Centralized governance and discovery	Security;Governance;Both
-34	Fill	To share a table across workspaces, use __________.	Delta Sharing	
-34	TrueFalse	Unity Catalog only works with Databricks SQL.	FALSE	
-34	Scenario	Your organization needs centralized data access controls. Solution?	Implement Unity Catalog	
-34	MCQ	Which Unity Catalog feature enables fine-grained access control?	Row-level security	Column masking;Row-level;Both
-35	MCQ	What is the primary use of dbutils in Databricks?	Workspace utilities and file operations	Notebook workflows;Utilities;Both
-35	Fill	To mount an S3 bucket, use __________.	dbutils.fs.mount()	
-35	TrueFalse	dbutils can trigger jobs across cloud platforms.	FALSE	
-35	Scenario	You need to access cloud storage from multiple notebooks. Solution?	Create mount points with dbutils	
-35	MCQ	Which dbutils module handles notebook workflows?	notebook	fs;notebook;secrets
-36	MCQ	What is the key advantage of using MERGE in Delta Lake?	Upsert capability (insert+update)	Faster deletes;Upserts;Both
-36	Fill	For incremental upserts, use __________ syntax.	MERGE INTO target USING source	
-36	TrueFalse	MERGE operations are atomic in Delta Lake.	TRUE	
-36	Scenario	You need to synchronize a Delta table with daily changes. Solution?	Daily MERGE job	
-36	MCQ	Which Delta Lake operation combines insert and update?	MERGE	INSERT;UPDATE;MERGE
-37	MCQ	What is the purpose of the Delta Lake VACUUM command?	Remove unused files older than retention	Compact files;Remove old;Both
-37	Fill	To set a 30-day file retention policy, use __________.	SET TBLPROPERTIES ('delta.logRetentionDuration'='30 days')	
-37	TrueFalse	VACUUM immediately deletes all old files.	FALSE	
-37	Scenario	Your Delta table storage grows uncontrollably. Solution?	Run VACUUM with retention policy	
-37	MCQ	Which command optimizes Delta file size?	OPTIMIZE	VACUUM;OPTIMIZE;COMPACT
-38	MCQ	What is the primary use of the Hive metastore?	Metadata management for tables	Data storage;Metadata;Both
-38	Fill	To connect Spark to an external Hive metastore, set __________.	spark.sql.hive.metastore.version	
-38	TrueFalse	Hive metastore is required for Spark SQL.	FALSE	
-38	Scenario	You need to share table definitions between Spark and Hive. Solution?	Configure shared metastore	
-38	MCQ	Which component stores Hive table schema information?	Metastore database	Namenode;Metastore;DataNode
-39	MCQ	What is the key advantage of using CTEs in SQL?	Improve query readability and organization	Performance;Readability;Both
-39	Fill	To reference a CTE multiple times, use __________.	WITH clause	
-39	TrueFalse	CTEs materialize results for reuse.	FALSE	
-39	Scenario	Your complex SQL query has repeated subqueries. How to simplify?	Replace with CTEs	
-39	MCQ	Which SQL feature is similar to CTEs but materialized?	Temporary views	Subqueries;Temporary views;CTEs
-40	MCQ	What is the purpose of predicate pushdown in Spark?	Filter data at source before processing	Network optimization;Early filtering;Both
-40	Fill	To disable predicate pushdown for a query, use __________.	spark.sql.parquet.filterPushdown=false	
-40	TrueFalse	Predicate pushdown works with all file formats.	FALSE	
-40	Scenario	Your query reads 100GB but only needs 1GB. How to optimize?	Enable predicate pushdown	
-40	MCQ	Which operation benefits most from predicate pushdown?	SELECT with WHERE clause	GROUP BY;JOIN;SELECT
+16,MCQ,What is the primary purpose of coalesce() in Spark?,Reduce partitions without full shuffle,Increase partitions;Reduce partitions;Change data
+16,Fill,"To reduce from 1000 to 100 partitions, use __________.",coalesce(100),
+16,TrueFalse,coalesce() always avoids a full shuffle.,TRUE,
+16,Scenario,Your DataFrame has 200 uneven partitions. How to optimize?,Use repartition(100) for balanced data,
+16,MCQ,Which operation performs a full shuffle?,repartition(),coalesce();repartition();both
+17,MCQ,What is the difference between managed and external tables in Spark?,Managed tables drop data on table deletion,Managed tables control lifecycle;External tables don't;Both
+17,Fill,"To create an external table, use __________.",CREATE EXTERNAL TABLE,
+17,TrueFalse,Managed tables are always better for production.,FALSE,
+17,Scenario,You need to share data between Spark and Hive. Which table type?,External table,
+17,MCQ,Where is metadata stored for external tables?,External metastore,Hive metastore;External metastore;Nowhere
+18,MCQ,What is the key advantage of Spark over MapReduce?,In-memory processing,Faster disks;In-memory processing;Better UI
+18,Fill,Spark's __________ API improved performance over RDDs.,DataFrame,
+18,TrueFalse,Spark always runs faster than MapReduce.,FALSE,
+18,Scenario,Your MapReduce job takes 8 hours. How would Spark help?,Use in-memory caching of intermediate data,
+18,MCQ,Which Spark feature reduces disk I/O?,Caching intermediate results,More executors;Caching;Smaller data
+19,MCQ,What is the purpose of Delta Lake's __delta_log folder?,Stores transaction logs and versions,Data files;Transaction logs;Both
+19,Fill,"To vacuum Delta Lake files older than 7 days, use __________.",VACUUM RETAIN 7 DAYS,
+19,TrueFalse,Delta_log files can be safely deleted manually.,FALSE,
+19,Scenario,Your Delta table grows too large. How to compact small files?,Run OPTIMIZE command,
+19,MCQ,Which command checks Delta table file statistics?,DESCRIBE DETAIL,SHOW FILES;DESCRIBE DETAIL;LIST FILES
+20,MCQ,What is the primary use case for Kafka Streams?,Real-time stream processing,Batch processing;Real-time streams;Both
+20,Fill,"To process Kafka streams in Spark, use __________.",Structured Streaming,
+20,TrueFalse,Kafka Streams requires Spark for processing.,FALSE,
+20,Scenario,You need millisecond-latency processing of clickstream data. Solution?,Kafka Streams with stateful operations,
+20,MCQ,Which library provides exactly-once semantics for Kafka?,Kafka Streams,Spark Streaming;Kafka Streams;Flink
+21,MCQ,What is the difference between UNION and UNION ALL?,UNION removes duplicates,UNION ALL faster;UNION removes duplicates;Same
+21,Fill,"To combine datasets keeping duplicates, use __________.",UNION ALL,
+21,TrueFalse,UNION is more expensive than UNION ALL.,TRUE,
+21,Scenario,You need to merge 3 datasets with possible duplicates. Which operation?,UNION ALL + distinct(),
+21,MCQ,Which operation performs deduplication automatically?,UNION,UNION;UNION ALL;Neither
+22,MCQ,What is the purpose of normalization in databases?,Reduce data redundancy,Improve joins;Reduce redundancy;Both
+22,Fill,The 3rd normal form eliminates __________ dependencies.,transitive,
+22,TrueFalse,Denormalization never improves performance.,FALSE,
+22,Scenario,Your queries are slow due to excessive joins. How to optimize?,Consider selective denormalization,
+22,MCQ,Which normal form deals with partial key dependencies?,2NF,1NF;2NF;3NF
+23,MCQ,What is the primary advantage of Parquet over CSV?,Columnar storage for better compression,Smaller size;Columnar storage;Both
+23,Fill,"To write a DataFrame in Parquet format, use __________.",df.write.parquet(),
+23,TrueFalse,Parquet is always better than Delta Lake.,FALSE,
+23,Scenario,Your analytics queries only need 2 columns from 100. Best format?,Parquet,
+23,MCQ,Which feature makes Parquet efficient for analytics?,Column pruning,Row slicing;Column pruning;Compression
+24,MCQ,What is the purpose of the NameNode in HDFS?,Manages metadata and file system tree,Stores data;Manages metadata;Both
+24,Fill,"If a DataNode fails, __________ replicates its blocks.",NameNode,
+24,TrueFalse,NameNode stores actual file data.,FALSE,
+24,Scenario,Your HDFS cluster has frequent DataNode failures. How to improve?,Increase replication factor,
+24,MCQ,Which HDFS component stores file data?,DataNode,NameNode;DataNode;Both
+25,MCQ,What is the primary use of OLAP systems?,Analytical processing,Transactions;Analytics;Both
+25,Fill,"For fast aggregations, use __________ databases.",OLAP,
+25,TrueFalse,OLTP systems optimize for read-heavy workloads.,FALSE,
+25,Scenario,You need to analyze 5 years of sales data. Which system?,OLAP (e.g., Snowflake  Redshift)
+25,MCQ,Which database type typically uses star schemas?,OLAP,OLTP;OLAP;Both
+26,MCQ,What is the primary advantage of using Delta Live Tables (DLT)?,Automated pipeline maintenance,Manual tuning;Automated maintenance;Simpler syntax
+26,Fill,"To declare a DLT pipeline, use __________ syntax.",CREATE LIVE TABLE,
+26,TrueFalse,DLT pipelines automatically handle schema evolution.,TRUE,
+26,Scenario,Your team needs reliable ETL with minimal manual intervention. Solution?,Implement Delta Live Tables,
+26,MCQ,Which DLT feature helps with data quality?,Expectations,Assertions;Expectations;Validation
+27,MCQ,What is the purpose of tumbling windows in streaming?,Fixed-size, non-overlapping time intervals Event counting;Fixed intervals;Sliding intervals
+27,Fill,"To aggregate 5-minute counts in Spark Streaming, use __________.","window(timeColumn, '5 minutes')",
+27,TrueFalse,Tumbling windows can have overlapping intervals.,FALSE,
+27,Scenario,You need hourly sales totals from a stream. Which window type?,Tumbling window (1 hour),
+27,MCQ,Which window type allows overlapping intervals?,Sliding window,Tumbling;Sliding;Session
+28,MCQ,What is the key difference between narrow and wide transformations?,Narrow transformations don't require shuffling,Shuffle requirement;Data locality;Both
+28,Fill,Examples of narrow transformations include __________.,"filter(), map()",
+28,TrueFalse,reduceByKey() is a narrow transformation.,FALSE,
+28,Scenario,Your Spark job has excessive shuffling. How to optimize?,Replace wide transformations where possible,
+28,MCQ,Which transformation always causes shuffling?,join(),map();filter();join()
+29,MCQ,What is the primary purpose of the Catalyst Optimizer?,Query optimization,Memory management;Query optimization;Network I/O
+29,Fill,"To view Spark's optimized query plan, use __________.",EXPLAIN EXTENDED,
+29,TrueFalse,The Catalyst Optimizer works only with RDDs.,FALSE,
+29,Scenario,Your SQL query runs slowly. How to investigate?,Check the optimized physical plan,
+29,MCQ,Which Spark component converts DataFrame operations to optimized RDDs?,Catalyst Optimizer,Spark Core;Catalyst;YARN
+30,MCQ,What is the purpose of Change Data Feed in Delta Lake?,Track row-level changes,Version control;Row-level changes;Both
+30,Fill,"To enable Change Data Feed, set __________.",delta.enableChangeDataFeed=true,
+30,TrueFalse,Change Data Feed requires separate storage.,FALSE,
+30,Scenario,You need to identify changed rows since yesterday. Solution?,Query Change Data Feed,
+30,MCQ,Which command reads Change Data Feed?,TABLE_CHANGES,DESCRIBE HISTORY;TABLE_CHANGES;VERSION
+31,MCQ,What is the primary use of mapping data flows in ADF?,Code-free data transformations,Orchestration;Transformations;Monitoring
+31,Fill,"To debug a mapping data flow, use __________.",data flow debug mode,
+31,TrueFalse,Mapping data flows run on Spark clusters.,TRUE,
+31,Scenario,Your team needs GUI-based ETL without coding. Solution?,ADF mapping data flows,
+31,MCQ,Which ADF component handles complex transformations?,Mapping data flows,Wrangling flows;Mapping;Both
+32,MCQ,What is the purpose of the medallion architecture?,Data quality progression (bronze→gold),Storage tiers;Quality progression;Both
+32,Fill,"The __________ layer contains cleansed, business-ready data.",gold,
+32,TrueFalse,All data should skip the silver layer.,FALSE,
+32,Scenario,Your lakehouse has raw, inconsistent data. How to structure?,Implement medallion architecture
+32,MCQ,Which layer contains raw  unprocessed data?,Bronze ,Bronze;Silver;Gold
+33,MCQ,What is the primary advantage of Spark Structured Streaming?,Unified API for batch and streaming,Lower latency;Unified API;Simpler setup
+33,Fill,"To read from Kafka in Structured Streaming, use __________.",readStream.format('kafka'),
+33,TrueFalse,Structured Streaming provides exactly-once semantics.,TRUE,
+33,Scenario,You need to process both historical and real-time data. Solution?,Structured Streaming,
+33,MCQ,Which streaming mode processes data in micro-batches?,Structured Streaming,Kafka Streams;Structured;Flink
+34,MCQ,What is the purpose of the Unity Catalog in Databricks?,Centralized governance and discovery,Security;Governance;Both
+34,Fill,"To share a table across workspaces, use __________.",Delta Sharing,
+34,TrueFalse,Unity Catalog only works with Databricks SQL.,FALSE,
+34,Scenario,Your organization needs centralized data access controls. Solution?,Implement Unity Catalog,
+34,MCQ,Which Unity Catalog feature enables fine-grained access control?,Row-level security,Column masking;Row-level;Both
+35,MCQ,What is the primary use of dbutils in Databricks?,Workspace utilities and file operations,Notebook workflows;Utilities;Both
+35,Fill,"To mount an S3 bucket, use __________.",dbutils.fs.mount(),
+35,TrueFalse,dbutils can trigger jobs across cloud platforms.,FALSE,
+35,Scenario,You need to access cloud storage from multiple notebooks. Solution?,Create mount points with dbutils,
+35,MCQ,Which dbutils module handles notebook workflows?,notebook,fs;notebook;secrets
+36,MCQ,What is the key advantage of using MERGE in Delta Lake?,Upsert capability (insert+update),Faster deletes;Upserts;Both
+36,Fill,"For incremental upserts, use __________ syntax.",MERGE INTO target USING source,
+36,TrueFalse,MERGE operations are atomic in Delta Lake.,TRUE,
+36,Scenario,You need to synchronize a Delta table with daily changes. Solution?,Daily MERGE job,
+36,MCQ,Which Delta Lake operation combines insert and update?,MERGE,INSERT;UPDATE;MERGE
+37,MCQ,What is the purpose of the Delta Lake VACUUM command?,Remove unused files older than retention,Compact files;Remove old;Both
+37,Fill,"To set a 30-day file retention policy, use __________.",SET TBLPROPERTIES ('delta.logRetentionDuration'='30 days'),
+37,TrueFalse,VACUUM immediately deletes all old files.,FALSE,
+37,Scenario,Your Delta table storage grows uncontrollably. Solution?,Run VACUUM with retention policy,
+37,MCQ,Which command optimizes Delta file size?,OPTIMIZE,VACUUM;OPTIMIZE;COMPACT
+38,MCQ,What is the primary use of the Hive metastore?,Metadata management for tables,Data storage;Metadata;Both
+38,Fill,"To connect Spark to an external Hive metastore, set __________.",spark.sql.hive.metastore.version,
+38,TrueFalse,Hive metastore is required for Spark SQL.,FALSE,
+38,Scenario,You need to share table definitions between Spark and Hive. Solution?,Configure shared metastore,
+38,MCQ,Which component stores Hive table schema information?,Metastore database,Namenode;Metastore;DataNode
+39,MCQ,What is the key advantage of using CTEs in SQL?,Improve query readability and organization,Performance;Readability;Both
+39,Fill,"To reference a CTE multiple times, use __________.",WITH clause,
+39,TrueFalse,CTEs materialize results for reuse.,FALSE,
+39,Scenario,Your complex SQL query has repeated subqueries. How to simplify?,Replace with CTEs,
+39,MCQ,Which SQL feature is similar to CTEs but materialized?,Temporary views,Subqueries;Temporary views;CTEs
+40,MCQ,What is the purpose of predicate pushdown in Spark?,Filter data at source before processing,Network optimization;Early filtering;Both
+40,Fill,"To disable predicate pushdown for a query, use __________.",spark.sql.parquet.filterPushdown=false,
+40,TrueFalse,Predicate pushdown works with all file formats.,FALSE,
+40,Scenario,Your query reads 100GB but only needs 1GB. How to optimize?,Enable predicate pushdown,
+40,MCQ,Which operation benefits most from predicate pushdown?,SELECT with WHERE clause,GROUP BY;JOIN;SELECT
