@@ -200,77 +200,77 @@ id,type,question,answer,options
 40,Scenario,Your query reads 100GB but only needs 1GB. How to optimize?,Enable predicate pushdown,
 40,MCQ,Which operation benefits most from predicate pushdown?,SELECT with WHERE clause,GROUP BY;JOIN;SELECT
 41,MCQ,What is the primary purpose of bucketing in Spark?,Pre-shuffle data with same keys into same files,Compression;Pre-shuffle;Faster scans
-41,Fill,"To create a bucketed table, use __________.","bucketBy()",
+41,Fill,"To create a bucketed table, use __________.",bucketBy(),
 41,TrueFalse,Bucketing works best with high-cardinality columns.,FALSE,
 41,Scenario,Your large table joins frequently fail due to shuffling. Solution?,Implement bucketing on join keys,
 41,MCQ,Which operation benefits most from bucketing?,Equi-joins,Range queries;Equi-joins;Aggregations
 42,MCQ,What is the key advantage of ORC over Parquet?,Better compression for Hive workloads,Faster reads;Better Hive compression;ACID
-42,Fill,"To optimize ORC reads, set __________.","spark.sql.orc.filterPushdown=true",
+42,Fill,"To optimize ORC reads, set __________.",spark.sql.orc.filterPushdown=true,
 42,TrueFalse,ORC and Parquet both support predicate pushdown.,TRUE,
 42,Scenario,Your Hive migration needs maximum compression. Which format?,ORC,
 42,MCQ,Which columnar format originated with Hive?,ORC,Parquet;ORC;Avro
 43,MCQ,What is the purpose of the Delta Lake OPTIMIZE command?,Compact small files into larger ones,Remove duplicates;Compact files;Both
-43,Fill,"To optimize a Delta table with Z-ordering, use __________.","OPTIMIZE table ZORDER BY column",
+43,Fill,"To optimize a Delta table with Z-ordering, use __________.",OPTIMIZE table ZORDER BY column,
 43,TrueFalse,OPTIMIZE rewrites the entire table every time.,FALSE,
 43,Scenario,Your Delta queries are slow due to many small files. Solution?,Run OPTIMIZE with Z-ordering,
 43,MCQ,Which optimization improves Delta read performance?,Z-ordering,Bloom filters;Z-ordering;Partitioning
 44,MCQ,What is the primary use of broadcast variables in Spark?,Share read-only variables across executors,Reduce shuffles;Share variables;Both
-44,Fill,"To broadcast a DataFrame, use __________.","broadcast()",
+44,Fill,"To broadcast a DataFrame, use __________.",broadcast(),
 44,TrueFalse,Broadcast variables can be modified by executors.,FALSE,
 44,Scenario,Your join fails with 'too large for broadcast'. Solution?,Increase spark.sql.autoBroadcastJoinThreshold,
 44,MCQ,Which config controls automatic broadcast threshold?,spark.sql.autoBroadcastJoinThreshold,spark.broadcast.threshold;spark.sql.autoBroadcastJoinThreshold;spark.driver.memory
 45,MCQ,What is the purpose of accumulators in Spark?,Aggregate values across executors,Counters;Aggregation;Both
-45,Fill,"To create a custom accumulator, use __________.","sparkContext.register()",
+45,Fill,"To create a custom accumulator, use __________.",sparkContext.register(),
 45,TrueFalse,Accumulators support distributed writes.,FALSE,
 45,Scenario,You need to count bad records during ETL. Solution?,Use accumulator,
 45,MCQ,Which shared variable type supports distributed writes?,None,Accumulators;Broadcast;Neither
 46,MCQ,What is the key advantage of Spark SQL over RDD API?,Optimized execution via Catalyst,Faster development;Catalyst optimization;Both
-46,Fill,"To register a DataFrame as a temp view, use __________.","createOrReplaceTempView()",
+46,Fill,"To register a DataFrame as a temp view, use __________.",createOrReplaceTempView(),
 46,TrueFalse,Spark SQL always outperforms RDD operations.,FALSE,
 46,Scenario,Your RDD code is complex and slow. How to optimize?,Rewrite using Spark SQL/DataFrames,
 46,MCQ,Which Spark component optimizes SQL queries?,Catalyst Optimizer,Tungsten;Catalyst;Spark Core
 47,MCQ,What is the purpose of the Tungsten engine in Spark?,Memory management and binary processing,Query parsing;Memory management;Both
-47,Fill,"To enable Tungsten optimizations, set __________.","spark.sql.tungsten.enabled=true",
+47,Fill,"To enable Tungsten optimizations, set __________.",spark.sql.tungsten.enabled=true,
 47,TrueFalse,Tungsten only benefits RDD operations.,FALSE,
 47,Scenario,Your DataFrame operations are memory-intensive. Solution?,Verify Tungsten is enabled,
 47,MCQ,Which optimization does Tungsten provide?,Off-heap memory management,Garbage collection;Off-heap;Codegen
 48,MCQ,What is the primary use of the Databricks CLI?,Automate workspace management,Notebook execution;Workspace automation;Both
-48,Fill,"To list all notebooks via CLI, use __________.","databricks workspace list",
+48,Fill,"To list all notebooks via CLI, use __________.",databricks workspace list,
 48,TrueFalse,Databricks CLI requires a running cluster.,FALSE,
 48,Scenario,You need to deploy 100 notebooks programmatically. Solution?,Use Databricks CLI,
 48,MCQ,Which CLI command manages jobs?,databricks jobs,databricks clusters;databricks jobs;databricks fs
 49,MCQ,What is the purpose of the Delta Lake VACUUM command?,Remove unused files older than retention period,Compact files;Remove old;Both
-49,Fill,"To check files eligible for VACUUM, use __________.","DESCRIBE HISTORY",
+49,Fill,"To check files eligible for VACUUM, use __________.",DESCRIBE HISTORY,
 49,TrueFalse,VACUUM can recover deleted data.,FALSE,
 49,Scenario,Your Delta table has thousands of small files. Solution?,Run OPTIMIZE then VACUUM,
 49,MCQ,Which command shows Delta file statistics?,DESCRIBE DETAIL,DESCRIBE HISTORY;DESCRIBE DETAIL;LIST FILES
 50,MCQ,What is the key advantage of using Delta Lake time travel?,Query previous table versions,Auditing;Version querying;Both
-50,Fill,"To query yesterday's data, use __________.","VERSION AS OF timestamp",
+50,Fill,"To query yesterday's data, use __________.",VERSION AS OF timestamp,
 50,TrueFalse,Time travel works indefinitely with all versions.,FALSE,
 50,Scenario,A pipeline corrupted your Delta table. How to recover?,Restore using time travel,
 50,MCQ,Which command restores a Delta table version?,RESTORE TABLE TO VERSION,DELETE VERSION;RESTORE;ROLLBACK
 51,MCQ,What is the purpose of the Databricks Asset Bundle?,Package and deploy resources,Notebook organization;Resource packaging;Both
-51,Fill,"To initialize a new bundle, use __________.","databricks bundle init",
+51,Fill,"To initialize a new bundle, use __________.",databricks bundle init,
 51,TrueFalse,Bundles can only contain notebooks.,FALSE,
 51,Scenario,You need consistent deployment across dev/test/prod. Solution?,Use Asset Bundles,
 51,MCQ,Which bundle component defines resources?,databricks.yml,manifest.json;databricks.yml;config.ini
 52,MCQ,What is the primary use of Databricks Repos?,Git integration for notebooks,Version control;Git integration;Both
-52,Fill,"To clone a Git repo, use __________.","databricks repos create",
+52,Fill,"To clone a Git repo, use __________.",databricks repos create,
 52,TrueFalse,Repos support collaborative notebook editing.,TRUE,
 52,Scenario,Your team needs Git-based notebook development. Solution?,Use Databricks Repos,
 52,MCQ,Which Repos feature enables branch switching?,Git integration,File browser;Git integration;Workspace
 53,MCQ,What is the purpose of the Databricks Jobs API?,Programmatic job management,Cluster control;Job management;Both
-53,Fill,"To submit a job via API, use __________ endpoint.","/jobs/runs/submit",
+53,Fill,"To submit a job via API, use __________ endpoint.",/jobs/runs/submit,
 53,TrueFalse,Jobs API requires running clusters.,FALSE,
 53,Scenario,You need to orchestrate 50 nightly jobs. Solution?,Use Jobs API with workflow,
 53,MCQ,Which API manages job schedules?,/jobs/create,/jobs/runs/submit;/jobs/create;/jobs/trigger
 54,MCQ,What is the key advantage of Photon in Databricks?,Vectorized query execution,Faster SQL;Vectorized execution;Both
-54,Fill,"To enable Photon, set __________.","spark.databricks.photon.enabled=true",
+54,Fill,"To enable Photon, set __________.",spark.databricks.photon.enabled=true,
 54,TrueFalse,Photon accelerates all Spark workloads equally.,FALSE,
 54,Scenario,Your SQL queries need maximum performance. Solution?,Enable Photon,
 54,MCQ,Which technology does Photon replace?,Tungsten for SQL,Spark Core;Tungsten;Catalyst
 55,MCQ,What is the purpose of the Databricks SQL Dashboard?,Visualize query results,Monitoring;Visualization;Both
-55,Fill,"To share a dashboard, use __________.","Permissions API",
+55,Fill,"To share a dashboard, use __________.",Permissions API,
 55,TrueFalse,Dashboards automatically refresh data.,FALSE,
 55,Scenario,Stakeholders need real-time metrics visualization. Solution?,Build SQL Dashboard,
 55,MCQ,Which component underlies Databricks Dashboards?,SQL Warehouse,Notebooks;SQL Warehouse;Delta
@@ -285,12 +285,12 @@ id,type,question,answer,options
 57,Scenario,You need to sync a data warehouse with Delta changes. Solution?,Use Change Data Feed,
 57,MCQ,Which Delta operation enables Change Data Feed?,ALTER TABLE SET TBLPROPERTIES,OPTIMIZE;VACUUM;ALTER TABLE
 58,MCQ,What is the purpose of the MERGE schema evolution option in Delta?,Automatically add new columns,Type coercion;Add columns;Both
-58,Fill,"To enable automatic schema merging, set __________.","spark.databricks.delta.schema.autoMerge.enabled=true",
+58,Fill,"To enable automatic schema merging, set __________.",spark.databricks.delta.schema.autoMerge.enabled=true,
 58,TrueFalse,MERGE schema evolution works with nested columns.,TRUE,
 58,Scenario,Your source data added a new optional column. How to handle?,Enable autoMerge for MERGE operations,
 58,MCQ,Which schema evolution option requires manual DDL?,OverwriteSchema,autoMerge;OverwriteSchema;None
 59,MCQ,What is the primary use of generated columns in Delta Lake?,Precompute derived values,Data quality;Derived values;Both
-59,Fill,"To create a column that's always uppercase, use __________.","GENERATED ALWAYS AS (UPPER(name))",
+59,Fill,"To create a column that's always uppercase, use __________.",GENERATED ALWAYS AS (UPPER(name)),
 59,TrueFalse,Generated columns can reference other generated columns.,FALSE,
 59,Scenario,You need to frequently query a lowercased version of a column. Solution?,Add generated column,
 59,MCQ,Which Delta feature reduces storage for derived columns?,Generated columns,Z-ordering;Generated columns;Compression
@@ -300,57 +300,57 @@ id,type,question,answer,options
 60,Scenario,You need to build a real-time audit system. Solution?,Use CDF streaming,
 60,MCQ,Which operation writes to CDF automatically?,All Delta writes,INSERT;UPDATE;All
 61,MCQ,What is the key advantage of Delta Lake's multi-cluster writes?,Concurrent writes from multiple clusters,High availability;Concurrent writes;Both
-61,Fill,"To enable concurrent writes, set __________.","spark.databricks.delta.multiClusterWrites.enabled=true",
+61,Fill,"To enable concurrent writes, set __________.",spark.databricks.delta.multiClusterWrites.enabled=true,
 61,TrueFalse,Multi-cluster writes eliminate all conflicts.,FALSE,
 61,Scenario,Your analytics and ML teams write to same table. Solution?,Enable multi-cluster writes,
 61,MCQ,Which protocol enables multi-cluster writes?,Delta Transaction Protocol,Spark RPC;Delta Protocol;gRPC
 62,MCQ,What is the purpose of Delta Lake's clone commands?,Create point-in-time copies,Backup;Copies;Both
-62,Fill,"To create a shallow clone, use __________.","CREATE TABLE clone_name SHALLOW CLONE source_table",
+62,Fill,"To create a shallow clone, use __________.",CREATE TABLE clone_name SHALLOW CLONE source_table,
 62,TrueFalse,Shallow clones share underlying data files.,TRUE,
 62,Scenario,You need to test schema changes without affecting production. Solution?,Create deep clone,
 62,MCQ,Which clone type copies actual data files?,Deep clone,Shallow;Deep;Both
 63,MCQ,What is the primary advantage of Delta Lake's OPTIMIZE ZORDER?,Co-locate related data for faster queries,Faster scans;Data co-location;Both
-63,Fill,"To optimize for date queries, use __________.","OPTIMIZE table ZORDER BY (date_column)",
+63,Fill,"To optimize for date queries, use __________.",OPTIMIZE table ZORDER BY (date_column),
 63,TrueFalse,ZORDER works best on high-cardinality columns.,FALSE,
 63,Scenario,Your time-range queries are slow on a large Delta table. Solution?,ZORDER by timestamp,
 63,MCQ,Which optimization complements ZORDER?,Partitioning,Bloom filters;Partitioning;Compression
 64,MCQ,What is the purpose of Delta Lake's data skipping?,Avoid reading irrelevant files,Query acceleration;File skipping;Both
-64,Fill,"To enable statistics collection, set __________.","spark.databricks.delta.properties.defaults.dataSkippingStatsEnabled=true",
+64,Fill,"To enable statistics collection, set __________.",spark.databricks.delta.properties.defaults.dataSkippingStatsEnabled=true,
 64,TrueFalse,Data skipping requires ZORDER optimization.,FALSE,
 64,Scenario,Your queries only access recent data but scan entire table. Solution?,Enable data skipping + partition by date,
 64,MCQ,Which metadata enables data skipping?,File-level statistics,Table stats;File stats;Both
 65,MCQ,What is the key advantage of Delta Lake's liquid clustering?,Flexible data organization without partitioning,Replace partitioning;Flexible organization;Both
-65,Fill,"To create a liquid clustered table, use __________.","CLUSTER BY (columns)",
+65,Fill,"To create a liquid clustered table, use __________.",CLUSTER BY (columns),
 65,TrueFalse,Liquid clustering requires Delta 2.3+.,TRUE,
 65,Scenario,Your query patterns change frequently. How to optimize?,Use liquid clustering instead of partitioning,
 65,MCQ,Which clustering method is more flexible than partitioning?,Liquid clustering,ZORDER;Liquid;Both
 66,MCQ,What is the purpose of Delta Lake's constraint features?,Enforce data quality rules,Validation;Quality rules;Both
-66,Fill,"To add a constraint, use __________.","ALTER TABLE table ADD CONSTRAINT constraint_name CHECK (condition)",
+66,Fill,"To add a constraint, use __________.",ALTER TABLE table ADD CONSTRAINT constraint_name CHECK (condition),
 66,TrueFalse,Constraints prevent all invalid data writes.,FALSE,
 66,Scenario,Your pipeline must ensure prices are positive. Solution?,Add CHECK constraint,
 66,MCQ,Which constraint type validates on write?,CHECK constraints,NOT NULL;CHECK;Both
 67,MCQ,What is the primary use of Delta Lake's table features?,Enable/disable advanced functionality,Version compatibility;Feature control;Both
-67,Fill,"To check enabled features, use __________.","DESCRIBE DETAIL table",
+67,Fill,"To check enabled features, use __________.",DESCRIBE DETAIL table,
 67,TrueFalse,Table features are immutable after creation.,FALSE,
 67,Scenario,You need to use CDF on an existing table. Solution?,Enable changeDataFeed feature,
 67,MCQ,Which command modifies table features?,ALTER TABLE SET TBLPROPERTIES,OPTIMIZE;ALTER TABLE;VACUUM
 68,MCQ,What is the purpose of Delta Lake's DynamoDB commit store?,High-availability metadata management,Fault tolerance;HA metadata;Both
-68,Fill,"To configure DynamoDB commit storage, set __________.","spark.delta.logStore.class=org.apache.spark.sql.delta.storage.DynamoDBLogStore",
+68,Fill,"To configure DynamoDB commit storage, set __________.",spark.delta.logStore.class=org.apache.spark.sql.delta.storage.DynamoDBLogStore,
 68,TrueFalse,DynamoDB commit store eliminates all write conflicts.,FALSE,
 68,Scenario,Your Delta Lake needs 99.99% commit availability. Solution?,Use DynamoDB commit store,
 68,MCQ,Which commit storage provides highest availability?,DynamoDB,HDFS;DynamoDB;S3
 69,MCQ,What is the key advantage of Delta Lake's Iceberg compatibility?,Interoperability with other engines,Read compatibility;Interoperability;Both
-69,Fill,"To read Delta as Iceberg, use __________.","spark.read.format('iceberg').load(path)",
+69,Fill,"To read Delta as Iceberg, use __________.",spark.read.format('iceberg').load(path),
 69,TrueFalse,Iceberg compatibility supports full write operations.,FALSE,
 69,Scenario,Your team uses both Delta and Iceberg tools. Solution?,Enable Iceberg compatibility,
 69,MCQ,Which protocol enables Iceberg compatibility?,Delta Universal Format (UNIVERSAL),Delta;UNIVERSAL;Both
 70,MCQ,What is the purpose of Delta Sharing?,Secure data sharing across organizations,External sharing;Secure sharing;Both
-70,Fill,"To create a share, use __________.","CREATE SHARE share_name",
+70,Fill,"To create a share, use __________.",CREATE SHARE share_name,
 70,TrueFalse,Delta Sharing requires data recipients to use Databricks.,FALSE,
 70,Scenario,You need to share Delta tables with external partners. Solution?,Implement Delta Sharing,
 70,MCQ,Which sharing method doesn't copy data?,Delta Sharing,ETL;Delta Sharing;Both
 71,MCQ,What is the primary benefit of Spark's Adaptive Query Execution (AQE)?,Dynamic runtime optimization based on statistics,Pre-compiled plans;Runtime optimization;Both
-71,Fill,"To enable AQE, set __________.","spark.sql.adaptive.enabled=true",
+71,Fill,"To enable AQE, set __________.",spark.sql.adaptive.enabled=true,
 71,TrueFalse,AQE can only optimize shuffle partitions.,FALSE,
 71,Scenario,Your join operation has significant skew after initial shuffle. How can AQE help?,Dynamically split skewed partitions,
 71,MCQ,Which AQE feature handles skewed joins?,skewJoinOptimization,partitionPruning;skewJoinOptimization;dynamicFileRepartitioning
@@ -360,37 +360,37 @@ id,type,question,answer,options
 72,Scenario,Your fact-dimension join reads all partitions despite filter. Solution?,Enable DPP + align partition schemes,
 72,MCQ,Which configuration enables Dynamic Partition Pruning?,spark.sql.optimizer.dynamicPartitionPruning.enabled,spark.sql.dpp.enabled;spark.sql.optimizer.dynamicPartitionPruning.enabled;spark.dynamic.pruning
 73,MCQ,What is the key advantage of Databricks' Serverless Compute?,Automatic cluster management without provisioning,Cost savings;Auto-management;Both
-73,Fill,"To use Serverless SQL warehouses, select __________ in UI.","Serverless",
+73,Fill,"To use Serverless SQL warehouses, select __________ in UI.",Serverless,
 73,TrueFalse,Serverless Compute is available for all workload types.,FALSE,
 73,Scenario,Your team needs on-demand SQL capacity without cluster management. Solution?,Use Serverless SQL,
 73,MCQ,Which Databricks component offers pay-per-query pricing?,Serverless SQL,All-purpose clusters;Serverless SQL;Job clusters
 74,MCQ,What is the primary use of Delta Lake's OPTIMIZE command with ZORDER?,Co-locate related data for faster scans,Data compression;Data co-location;Both
 74,Fill,"For multi-column ZORDER, use __________.","OPTIMIZE table ZORDER BY (col1, col2)",
 74,TrueFalse,ZORDER works equally well on all column types.,FALSE,
-74,Scenario,Your queries filter on customer_id and date. How to optimize?,ZORDER BY (customer_id, date),
+74,Scenario,Your queries filter on customer_id and date. How to optimize?,ZORDER BY (customer_id  date),
 74,MCQ,Which columns benefit most from ZORDER?,High-filter cardinality columns,All columns;High-filter cardinality;Partition columns
 75,MCQ,What is the purpose of Delta Lake's data skipping?,Minimize data scanned using file-level stats,Query acceleration;Data skipping;Both
-75,Fill,"To check skipped files, examine __________.","scan metrics in query plan",
+75,Fill,"To check skipped files, examine __________.",scan metrics in query plan,
 75,TrueFalse,Data skipping requires ZORDER optimization.,FALSE,
 75,Scenario,Your query scans 1000 files but only needs 50. Solution?,Enable data skipping + proper partitioning,
 75,MCQ,Which metadata enables data skipping?,File-level min/max stats,Table stats;File min/max;Both
 76,MCQ,What is the key advantage of using Delta Lake with Unity Catalog?,Centralized governance across workspaces,Access control;Central governance;Both
-76,Fill,"To share a Delta table across workspaces, use __________.","Delta Sharing",
+76,Fill,"To share a Delta table across workspaces, use __________.",Delta Sharing,
 76,TrueFalse,Unity Catalog requires Databricks-specific file formats.,FALSE,
 76,Scenario,Your organization needs column-level security on Delta tables. Solution?,Implement Unity Catalog,
 76,MCQ,Which Unity Catalog feature enables row-level security?,Dynamic views,Column masking;Dynamic views;Both
 77,MCQ,What is the purpose of the Delta Lake VACUUM command?,Remove unused files older than retention period,Storage cleanup;File removal;Both
-77,Fill,"To retain 7 days of files, use __________.","VACUUM RETAIN 7 DAYS",
+77,Fill,"To retain 7 days of files, use __________.",VACUUM RETAIN 7 DAYS,
 77,TrueFalse,VACUUM can recover deleted data.,FALSE,
 77,Scenario,Your Delta table has thousands of small files after many updates. Solution?,Run OPTIMIZE then VACUUM,
 77,MCQ,Which command shows files eligible for VACUUM?,DESCRIBE DETAIL,DESCRIBE HISTORY;DESCRIBE DETAIL;LIST FILES
 78,MCQ,What is the primary benefit of Databricks' Photon engine?,Vectorized query execution for SQL workloads,Faster processing;Vectorization;Both
-78,Fill,"To disable Photon for a query, use __________.","SET spark.databricks.photon.enabled=false",
+78,Fill,"To disable Photon for a query, use __________.",SET spark.databricks.photon.enabled=false,
 78,TrueFalse,Photon accelerates all Spark operations equally.,FALSE,
 78,Scenario,Your SQL workloads need maximum performance. Solution?,Enable Photon + proper partitioning,
 78,MCQ,Which operations benefit most from Photon?,SQL queries,DataFrame API;SQL;RDD operations
 79,MCQ,What is the purpose of Delta Lake's generated columns?,Precompute and store derived values,Storage optimization;Derived values;Both
-79,Fill,"To create a column that computes year from date, use __________.","GENERATED ALWAYS AS (YEAR(date))",
+79,Fill,"To create a column that computes year from date, use __________.",GENERATED ALWAYS AS (YEAR(date)),
 79,TrueFalse,Generated columns can reference other generated columns.,FALSE,
 79,Scenario,You frequently query a derived value from complex calculation. Solution?,Add generated column,
 79,MCQ,Which Delta feature reduces compute for derived values?,Generated columns,Materialized views;Generated columns;Both
@@ -400,87 +400,87 @@ id,type,question,answer,options
 80,Scenario,You need to incrementally sync a data warehouse with Delta changes. Solution?,Use Change Data Feed,
 80,MCQ,Which operation writes to Change Data Feed automatically?,All Delta writes,INSERT;UPDATE;All
 81,MCQ,What is the purpose of Delta Lake's liquid clustering?,Flexible data organization without fixed partitioning,Adaptive layout;Flexible organization;Both
-81,Fill,"To create a clustered table, use __________.","CLUSTER BY (columns)",
+81,Fill,"To create a clustered table, use __________.",CLUSTER BY (columns),
 81,TrueFalse,Liquid clustering replaces all partitioning needs.,FALSE,
 81,Scenario,Your query patterns change frequently making partitioning ineffective. Solution?,Use liquid clustering,
 81,MCQ,Which data organization method is most flexible?,Liquid clustering,Partitioning;ZORDER;Liquid clustering
 82,MCQ,What is the primary use of Delta Lake's constraints?,Enforce data quality at write time,Validation;Quality control;Both
-82,Fill,"To require positive values in a column, add __________.","ADD CONSTRAINT positive CHECK (value > 0)",
+82,Fill,"To require positive values in a column, add __________.",ADD CONSTRAINT positive CHECK (value > 0),
 82,TrueFalse,Constraints can reference multiple columns.,TRUE,
 82,Scenario,Your pipeline must ensure end_date > start_date. Solution?,Add CHECK constraint,
 82,MCQ,Which constraint type validates across columns?,CHECK constraints,NOT NULL;CHECK;Both
 83,MCQ,What is the purpose of Delta Lake's table features?,Enable/disable advanced functionality,Version control;Feature management;Both
-83,Fill,"To enable Change Data Feed on existing table, use __________.","ALTER TABLE SET TBLPROPERTIES (delta.enableChangeDataFeed = true)",
+83,Fill,"To enable Change Data Feed on existing table, use __________.",ALTER TABLE SET TBLPROPERTIES (delta.enableChangeDataFeed = true),
 83,TrueFalse,Table features can only be set at table creation.,FALSE,
 83,Scenario,You need to implement CDC on an existing production table. Solution?,Enable changeDataFeed feature,
 83,MCQ,Which command modifies table features?,ALTER TABLE SET TBLPROPERTIES,OPTIMIZE;ALTER TABLE;VACUUM
 84,MCQ,What is the key advantage of Delta Lake's Iceberg compatibility?,Read interoperability with other engines,Format flexibility;Interoperability;Both
-84,Fill,"To write Delta-format data readable by Iceberg, set __________.","spark.databricks.delta.formatCheck.enabled=false",
+84,Fill,"To write Delta-format data readable by Iceberg, set __________.",spark.databricks.delta.formatCheck.enabled=false,
 84,TrueFalse,Iceberg compatibility supports full write operations.,FALSE,
 84,Scenario,Your team uses both Delta and Iceberg tools. Solution?,Enable Iceberg compatibility,
 84,MCQ,Which protocol enables cross-engine compatibility?,Delta Universal Format (UNIVERSAL),Delta;UNIVERSAL;Both
 85,MCQ,What is the purpose of Delta Sharing?,Secure data sharing across organizations,External access;Secure sharing;Both
-85,Fill,"To share specific table versions, use __________.","CREATE SHARE ... WITH VERSION AS OF",
+85,Fill,"To share specific table versions, use __________.",CREATE SHARE ... WITH VERSION AS OF,
 85,TrueFalse,Delta Sharing requires data recipients to use Databricks.,FALSE,
 85,Scenario,You need to share sensitive data with external auditors. Solution?,Implement Delta Sharing with access controls,
 85,MCQ,Which data sharing method doesn't require data movement?,Delta Sharing,ETL;Delta Sharing;Both
 86,MCQ,What is the primary benefit of materialized views in data warehouses?,Pre-compute expensive queries for faster access,Data storage;Query acceleration;Both
-86,Fill,"To create a materialized view in Delta Lake, use __________.","CREATE MATERIALIZED VIEW",
+86,Fill,"To create a materialized view in Delta Lake, use __________.",CREATE MATERIALIZED VIEW,
 86,TrueFalse,Materialized views automatically refresh in real-time.,FALSE,
 86,Scenario,Your dashboard queries complex aggregations on large tables. Solution?,Create materialized views,
 86,MCQ,Which technology provides automatic materialized view refresh?,Delta Live Tables,Spark SQL;Delta Live Tables;Materialized views
 87,MCQ,What is the purpose of predicate pushdown in columnar formats?,Filter data before reading from storage,Network optimization;Early filtering;Both
-87,Fill,"To maximize predicate pushdown with Parquet, use __________.","columnar filtering",
+87,Fill,"To maximize predicate pushdown with Parquet, use __________.",columnar filtering,
 87,TrueFalse,Predicate pushdown works equally well with all file formats.,FALSE,
 87,Scenario,Your query reads 1TB but only needs 10GB. How to optimize?,Partition + predicate pushdown,
 87,MCQ,Which file format enables best predicate pushdown?,Parquet,CSV;JSON;Parquet
 88,MCQ,What is the key advantage of Delta Lake's time travel?,Query historical data versions,Audit trails;Historical queries;Both
-88,Fill,"To restore a table to yesterday's version, use __________.","RESTORE TABLE TO VERSION AS OF version_number",
+88,Fill,"To restore a table to yesterday's version, use __________.",RESTORE TABLE TO VERSION AS OF version_number,
 88,TrueFalse,Time travel requires keeping all historical files indefinitely.,FALSE,
 88,Scenario,A developer accidentally deleted critical data. How to recover?,Use time travel to restore,
 88,MCQ,Which command shows available table versions?,DESCRIBE HISTORY,DESCRIBE DETAIL;DESCRIBE HISTORY;LIST VERSIONS
 89,MCQ,What is the purpose of Delta Lake's OPTIMIZE command?,Compact small files + improve read performance,Storage management;Read optimization;Both
-89,Fill,"To optimize while preserving file history, use __________.","OPTIMIZE table RETAIN HISTORY",
+89,Fill,"To optimize while preserving file history, use __________.",OPTIMIZE table RETAIN HISTORY,
 89,TrueFalse,OPTIMIZE reduces the total number of files.,TRUE,
 89,Scenario,Your Delta queries slow down after many small writes. Solution?,Run OPTIMIZE with ZORDER,
 89,MCQ,Which optimization complements file compaction?,Z-ordering,Bloom filters;Z-ordering;Partitioning
 90,MCQ,What is the primary use of Delta Lake's generated columns?,Store precomputed derived values,Storage efficiency;Derived values;Both
-90,Fill,"To create a column that's always uppercase, use __________.","GENERATED ALWAYS AS (UPPER(name_column))",
+90,Fill,"To create a column that's always uppercase, use __________.",GENERATED ALWAYS AS (UPPER(name_column)),
 90,TrueFalse,Generated columns can be explicitly written to.,FALSE,
 90,Scenario,You frequently query a cleaned version of a messy column. Solution?,Add generated column,
 90,MCQ,Which Delta feature reduces compute for derived values?,Generated columns,Materialized views;Generated columns;Both
 91,MCQ,What is the purpose of Delta Lake's liquid clustering?,Flexible data organization without partitioning,Adaptive layout;Flexible organization;Both
-91,Fill,"To convert a partitioned table to clustered, use __________.","ALTER TABLE table_name CLUSTER BY (columns)",
+91,Fill,"To convert a partitioned table to clustered, use __________.",ALTER TABLE table_name CLUSTER BY (columns),
 91,TrueFalse,Liquid clustering completely replaces partitioning.,FALSE,
 91,Scenario,Your query patterns change monthly making partitioning ineffective. Solution?,Use liquid clustering,
 91,MCQ,Which data organization method adapts to query patterns?,Liquid clustering,Partitioning;ZORDER;Liquid clustering
 92,MCQ,What is the key advantage of Delta Lake's constraints?,Enforce data quality at write time,Validation;Quality control;Both
-92,Fill,"To require non-null values in a column, use __________.","ALTER TABLE table_name ALTER COLUMN column_name SET NOT NULL",
+92,Fill,"To require non-null values in a column, use __________.",ALTER TABLE table_name ALTER COLUMN column_name SET NOT NULL,
 92,TrueFalse,Constraints can reference multiple tables.,FALSE,
 92,Scenario,Your pipeline must ensure order_date <= delivery_date. Solution?,Add CHECK constraint,
 92,MCQ,Which constraint type validates across columns?,CHECK constraints,NOT NULL;CHECK;Both
 93,MCQ,What is the purpose of Delta Lake's table features?,Enable/disable advanced functionality,Version control;Feature management;Both
-93,Fill,"To enable Change Data Feed on existing table, use __________.","ALTER TABLE table_name SET TBLPROPERTIES ('delta.enableChangeDataFeed' = 'true')",
+93,Fill,"To enable Change Data Feed on existing table, use __________.",ALTER TABLE table_name SET TBLPROPERTIES ('delta.enableChangeDataFeed' = 'true'),
 93,TrueFalse,Table features can be modified after table creation.,TRUE,
 93,Scenario,You need to implement CDC on a production table. Solution?,Enable changeDataFeed feature,
 93,MCQ,Which command shows enabled table features?,DESCRIBE DETAIL,DESCRIBE HISTORY;DESCRIBE DETAIL;SHOW FEATURES
 94,MCQ,What is the primary benefit of Delta Lake's Iceberg compatibility?,Read interoperability with other engines,Format flexibility;Interoperability;Both
-94,Fill,"To write Delta data readable by Iceberg, set __________.","spark.databricks.delta.formatCheck.enabled=false",
+94,Fill,"To write Delta data readable by Iceberg, set __________.",spark.databricks.delta.formatCheck.enabled=false,
 94,TrueFalse,Iceberg compatibility supports full write operations.,FALSE,
 94,Scenario,Your analytics team uses Iceberg while ETL uses Delta. Solution?,Enable Iceberg compatibility,
 94,MCQ,Which protocol enables cross-engine compatibility?,Delta Universal Format (UNIVERSAL),Delta;UNIVERSAL;Both
 95,MCQ,What is the purpose of Delta Sharing?,Secure data sharing across organizations,External access;Secure sharing;Both
-95,Fill,"To share specific table versions, use __________.","CREATE SHARE share_name WITH VERSION AS OF version",
+95,Fill,"To share specific table versions, use __________.",CREATE SHARE share_name WITH VERSION AS OF version,
 95,TrueFalse,Delta Sharing requires data movement to recipient.,FALSE,
 95,Scenario,You need to share financial data with auditors under NDA. Solution?,Implement Delta Sharing with access controls,
 95,MCQ,Which sharing method maintains data governance?,Delta Sharing,ETL;Delta Sharing;Both
 96,MCQ,What is the primary use of Databricks' Feature Store?,Manage ML features across teams,Feature sharing;ML ops;Both
-96,Fill,"To create a feature table, use __________.","FeatureStoreClient.create_table()",
+96,Fill,"To create a feature table, use __________.",FeatureStoreClient.create_table(),
 96,TrueFalse,Feature Store automatically handles feature drift.,FALSE,
 96,Scenario,Your ML models use inconsistent feature calculations. Solution?,Implement Feature Store,
 96,MCQ,Which component provides feature lineage tracking?,Feature Store,MLflow;Feature Store;Unity Catalog
 97,MCQ,What is the purpose of MLflow in Databricks?,Manage ML lifecycle from experimentation to production,Model tracking;ML ops;Both
-97,Fill,"To log model parameters, use __________.","mlflow.log_param()",
+97,Fill,"To log model parameters, use __________.",mlflow.log_param(),
 97,TrueFalse,MLflow only works with Python models.,FALSE,
 97,Scenario,Your data scientists can't reproduce model results. Solution?,Implement MLflow tracking,
 97,MCQ,Which MLflow component handles model deployment?,Model Registry,Tracking;Registry;Projects
@@ -490,7 +490,7 @@ id,type,question,answer,options
 98,Scenario,Your organization wants to reduce data silos. Solution?,Adopt Lakehouse architecture,
 98,MCQ,Which Lakehouse component provides data governance?,Unity Catalog,Delta Lake;Unity Catalog;Both
 99,MCQ,What is the purpose of Databricks' Workflows?,Orchestrate multi-task data pipelines,Job scheduling;Pipeline orchestration;Both
-99,Fill,"To create a workflow with dependencies, use __________.","Task dependencies in UI/API",
+99,Fill,"To create a workflow with dependencies, use __________.",Task dependencies in UI/API,
 99,TrueFalse,Workflows can only run notebooks.,FALSE,
 99,Scenario,You need to run ETL then ML then analytics jobs sequentially. Solution?,Create Workflow with tasks,
 99,MCQ,Which Workflow feature handles job failures?,Retry policies,Alerts;Retry policies;Both
@@ -500,26 +500,26 @@ id,type,question,answer,options
 100,Scenario,You need to incrementally update a data mart. Solution?,Use Delta CDC,
 100,MCQ,Which operation writes to Change Data Feed?,All Delta writes,INSERT;UPDATE;All
 101,MCQ,What is the primary benefit of using Delta Lake's Change Data Feed with MERGE operations?,Efficient upserts with full change tracking,Audit capability;Efficient upserts;Both
-101,Fill,"To implement SCD Type 2 using Change Data Feed, use __________ pattern.","MERGE + CDF time travel",
+101,Fill,"To implement SCD Type 2 using Change Data Feed, use __________ pattern.",MERGE + CDF time travel,
 101,TrueFalse,Change Data Feed eliminates the need for separate audit tables.,TRUE,
 101,Scenario,You need to maintain full history of customer address changes. Solution?,Implement SCD Type 2 via CDF + MERGE,
 101,MCQ,Which Delta feature provides row-level change tracking?,Change Data Feed,Time travel;Change Data Feed;Both
 102,MCQ,What is the purpose of Delta Lake's OPTIMIZE with ZORDER on nested columns?,Improve query performance on complex data types,Struct field access;Nested optimization;Both
-102,Fill,"To optimize queries filtering on nested field 'user.address.city', use __________.","ZORDER BY (user.address.city)",
+102,Fill,"To optimize queries filtering on nested field 'user.address.city', use __________.",ZORDER BY (user.address.city),
 102,TrueFalse,ZORDER works equally well on all nested field types.,FALSE,
 102,Scenario,Your queries frequently filter on nested JSON attributes. Solution?,ZORDER by nested field paths,
 102,MCQ,Which optimization improves nested JSON query performance?,ZORDER on nested fields,Partitioning;ZORDER;Materialized views
 103,MCQ,What is the key advantage of Delta Lake's multi-hop architecture?,Separate processing stages with quality gates,Modular pipelines;Quality stages;Both
-103,Fill,"In medallion architecture, the __________ layer contains business-ready data.","gold",
+103,Fill,"In medallion architecture, the __________ layer contains business-ready data.",gold,
 103,TrueFalse,Bronze layer should always be query-optimized.,FALSE,
 103,Scenario,Your raw data needs progressive cleaning and enrichment. Solution?,Implement multi-hop architecture,
 104,MCQ,What is the purpose of Delta Lake's constraint notifications?,Alert on constraint violations without failing writes,Quality monitoring;Non-blocking validation;Both
-104,Fill,"To collect constraint violations without failing jobs, set __________.","spark.databricks.delta.constraints.allowUnenforcedNonnull=true",
+104,Fill,"To collect constraint violations without failing jobs, set __________.",spark.databricks.delta.constraints.allowUnenforcedNonnull=true,
 104,TrueFalse,Constraint notifications require Unity Catalog.,FALSE,
 104,Scenario,You want to monitor bad data without breaking pipelines. Solution?,Use constraint notifications,
 104,MCQ,Which Delta feature provides non-blocking data validation?,Constraint notifications,CHECK constraints;Notifications;Both
 105,MCQ,What is the primary benefit of Delta Lake's generated columns for partition pruning?,Pre-compute partition values for faster filtering,Storage savings;Partition optimization;Both
-105,Fill,"To auto-generate partition columns from timestamps, use __________.","GENERATED ALWAYS AS (DATE(timestamp))",
+105,Fill,"To auto-generate partition columns from timestamps, use __________.",GENERATED ALWAYS AS (DATE(timestamp)),
 105,TrueFalse,Generated partition columns can't be queried directly.,FALSE,
 105,Scenario,Your daily queries filter on month but data has timestamps. Solution?,Add generated month column,
 105,MCQ,Which optimization combines generated columns with partitioning?,Partition pruning via generated columns,ZORDER;Partition pruning;Both
@@ -529,385 +529,385 @@ id,type,question,answer,options
 106,Scenario,Your analytics filter on various dimension combinations. Solution?,Implement liquid clustering,
 106,MCQ,Which data organization handles evolving query patterns?,Liquid clustering,Static partitioning;Liquid clustering;Both
 107,MCQ,What is the key advantage of Delta Lake's Iceberg format compatibility?,Read interoperability across processing engines,Ecosystem flexibility;Cross-engine reads;Both
-107,Fill,"To enable Iceberg readers to access Delta tables, set __________.","delta.enableIcebergCompat=true",
+107,Fill,"To enable Iceberg readers to access Delta tables, set __________.",delta.enableIcebergCompat=true,
 107,TrueFalse,Iceberg compatibility supports full Delta write operations.,FALSE,
 107,Scenario,Your Spark jobs write Delta but Presto team needs access. Solution?,Enable Iceberg compatibility,
 107,MCQ,Which protocol enables cross-engine table formats?,Delta Universal Format (UNIVERSAL),Delta;UNIVERSAL;Both
 108,MCQ,What is the purpose of Delta Sharing's recipient authentication?,Secure data access with fine-grained controls,Row-level security;Recipient validation;Both
-108,Fill,"To restrict shared data to specific rows, use __________.","row filters",
+108,Fill,"To restrict shared data to specific rows, use __________.",row filters,
 108,TrueFalse,Delta Sharing supports OAuth for recipient auth.,TRUE,
 108,Scenario,You need to share customer data but mask PII. Solution?,Delta Sharing with row filters,
 108,MCQ,Which sharing feature enables column-level protection?,Column masking,Row filters;Column masking;Both
 109,MCQ,What is the primary benefit of Databricks' Serverless Real-Time Inference?,Low-latency model serving without infrastructure management,Scale-to-zero;Managed serving;Both
-109,Fill,"To deploy a model for real-time predictions, use __________.","Model Serving in MLflow",
+109,Fill,"To deploy a model for real-time predictions, use __________.",Model Serving in MLflow,
 109,TrueFalse,Serverless inference supports all ML frameworks.,FALSE,
 109,Scenario,Your fraud detection model needs <100ms latency. Solution?,Serverless Real-Time Inference,
 109,MCQ,Which deployment option provides automatic scaling?,Serverless Real-Time Inference,Batch inference;Serverless;Both
 110,MCQ,What is the purpose of Databricks' Asset Bundles?,Version and deploy entire data pipelines,CI/CD integration;Pipeline packaging;Both
-110,Fill,"To define deployment environments, use __________ file.","databricks.yml",
+110,Fill,"To define deployment environments, use __________ file.",databricks.yml,
 110,TrueFalse,Asset Bundles can only contain notebooks.,FALSE,
 110,Scenario,You need reproducible deployments across dev/test/prod. Solution?,Implement Asset Bundles,
 110,MCQ,Which component defines bundle resources?,databricks.yml,manifest.json;databricks.yml;bundle.json
 111,MCQ,What is the key advantage of Delta Lake's constraint evolution?,Modify constraints without rewriting tables,Schema flexibility;Constraint management;Both
-111,Fill,"To relax a constraint requirement, use __________.","ALTER TABLE ALTER CONSTRAINT",
+111,Fill,"To relax a constraint requirement, use __________.",ALTER TABLE ALTER CONSTRAINT,
 111,TrueFalse,Constraint evolution requires table rewrite.,FALSE,
 111,Scenario,Your null constraint needs to accommodate legacy data. Solution?,Use constraint evolution,
 111,MCQ,Which operation allows modifying existing constraints?,Constraint evolution,DROP/CREATE;Constraint evolution;Both
 112,MCQ,What is the purpose of Delta Lake's generated column dependencies?,Automatically update derived columns when sources change,Cascade updates;Derived column management;Both
-112,Fill,"When a source column changes, generated columns __________.","automatically recompute",
+112,Fill,"When a source column changes, generated columns __________.",automatically recompute,
 112,TrueFalse,Generated columns can depend on other generated columns.,FALSE,
 112,Scenario,Your cleaned_email column should update when email changes. Solution?,Use generated column,
 112,MCQ,Which feature maintains derived column consistency?,Generated columns,Materialized views;Generated columns;Both
 113,MCQ,What is the primary benefit of Photon's vectorized query engine?,CPU-efficient columnar processing,Hardware acceleration;Vectorized processing;Both
-113,Fill,"To force Photon for specific queries, use __________.","/*+ PHOTON */ hint",
+113,Fill,"To force Photon for specific queries, use __________.",/*+ PHOTON */ hint,
 113,TrueFalse,Photon accelerates all Spark operations equally.,FALSE,
 113,Scenario,Your analytical queries need maximum performance. Solution?,Enable Photon + proper file organization,
 113,MCQ,Which operations benefit most from Photon?,Analytical scans,ETL;Analytical;Both
 114,MCQ,What is the purpose of Delta Lake's default constraint values?,Simplify schema evolution with automatic backfills,Backward compatibility;Default handling;Both
-114,Fill,"To add a column with default value, use __________.","ALTER TABLE ADD COLUMN col DEFAULT value",
+114,Fill,"To add a column with default value, use __________.",ALTER TABLE ADD COLUMN col DEFAULT value,
 114,TrueFalse,Default values require immediate table rewrite.,FALSE,
 114,Scenario,You need to add a status column to existing records. Solution?,ADD COLUMN with DEFAULT,
 114,MCQ,Which schema evolution strategy avoids backfilling?,Default constraints,Manual backfill;Default constraints;Both
 115,MCQ,What is the key advantage of Delta Lake's materialized view rewrite?,Automatically optimize queries to use materialized views,Query acceleration;Automatic rewrite;Both
-115,Fill,"To create incrementally refreshed views, use __________.","CREATE MATERIALIZED VIEW ... REFRESH",
+115,Fill,"To create incrementally refreshed views, use __________.",CREATE MATERIALIZED VIEW ... REFRESH,
 115,TrueFalse,Materialized views support arbitrary computation.,FALSE,
 115,Scenario,Your dashboard queries expensive aggregations. Solution?,Create materialized views,
 115,MCQ,Which technology automatically redirects queries to materialized views?,Query rewrite,Manual hints;Query rewrite;Both
-131,MCQ,"What is the difference between client mode and cluster mode in Spark?","Client mode runs driver on submission machine, cluster mode on cluster","Driver location;Resource management;Both"
-131,Fill,"In __________ mode, the driver runs inside the cluster.","cluster",
+131,MCQ,What is the difference between client mode and cluster mode in Spark?,"Client mode runs driver on submission machine, cluster mode on cluster",Driver location;Resource management;Both
+131,Fill,"In __________ mode, the driver runs inside the cluster.",cluster,
 131,TrueFalse,Client mode is better for production deployments.,FALSE,
 131,Scenario,Your Spark job fails when laptop disconnects. How to fix?,Use cluster mode,
 131,MCQ,Which mode provides better resource management?,Cluster mode,Client mode;Cluster mode;Same
-132,MCQ,"What is the difference between coalesce and repartition?","coalesce minimizes shuffles, repartition guarantees exact partition count","Shuffle behavior;Partition count;Both"
-132,Fill,"To reduce partitions without full shuffle, use __________.","coalesce",
+132,MCQ,What is the difference between coalesce and repartition?,"coalesce minimizes shuffles, repartition guarantees exact partition count",Shuffle behavior;Partition count;Both
+132,Fill,"To reduce partitions without full shuffle, use __________.",coalesce,
 132,TrueFalse,repartition() always increases partition count.,FALSE,
 132,Scenario,Your 1000-partition DataFrame has skewed partitions. Solution?,coalesce to balanced count,
 132,MCQ,Which operation is more expensive for reducing partitions?,repartition,coalesce;repartition;Same
-133,MCQ,"What is the difference between DataFrames and RDDs?","DataFrames have schema and Catalyst optimization","Optimization level;Schema;Both"
-133,Fill,"To enable RDD-like operations on DataFrames, use __________.","rdd property",
+133,MCQ,What is the difference between DataFrames and RDDs?,DataFrames have schema and Catalyst optimization,Optimization level;Schema;Both
+133,Fill,"To enable RDD-like operations on DataFrames, use __________.",rdd property,
 133,TrueFalse,RDDs are always faster than DataFrames.,FALSE,
 133,Scenario,Your legacy RDD code needs performance boost. Solution?,Convert to DataFrame,
 133,MCQ,Which API provides automatic query optimization?,DataFrames,RDDs;DataFrames;Neither
-134,MCQ,"What is the difference between Kafka Streams and Spark Streaming?","Kafka Streams is library for Kafka, Spark Streaming handles multiple sources","Scope;Source support;Both"
-134,Fill,"For stateful Kafka processing, use __________.","Kafka Streams",
+134,MCQ,What is the difference between Kafka Streams and Spark Streaming?,"Kafka Streams is library for Kafka, Spark Streaming handles multiple sources",Scope;Source support;Both
+134,Fill,"For stateful Kafka processing, use __________.",Kafka Streams,
 134,TrueFalse,Spark Streaming can't handle Kafka data.,FALSE,
 134,Scenario,You need millisecond latency on Kafka topics. Solution?,Kafka Streams,
 134,MCQ,Which supports non-Kafka sources?,Spark Streaming,Kafka Streams;Spark Streaming;Both
-135,MCQ,"What is the difference between OLTP and OLAP?","OLTP for transactions, OLAP for analytics","Use case;Query pattern;Both"
-135,Fill,"For reporting queries, use __________ system.","OLAP",
+135,MCQ,What is the difference between OLTP and OLAP?,"OLTP for transactions, OLAP for analytics",Use case;Query pattern;Both
+135,Fill,"For reporting queries, use __________ system.",OLAP,
 135,TrueFalse,OLTP systems optimize for complex analytics.,FALSE,
 135,Scenario,Your e-commerce app needs order processing. Solution?,OLTP database,
 135,MCQ,Which system uses star schemas?,OLAP,OLTP;OLAP;Both
-136,MCQ,"What is the difference between UNION and UNION ALL?","UNION removes duplicates, UNION ALL keeps all rows","Duplicate handling;Performance;Both"
-136,Fill,"To combine datasets without deduplication, use __________.","UNION ALL",
+136,MCQ,What is the difference between UNION and UNION ALL?,"UNION removes duplicates, UNION ALL keeps all rows",Duplicate handling;Performance;Both
+136,Fill,"To combine datasets without deduplication, use __________.",UNION ALL,
 136,TrueFalse,UNION is faster than UNION ALL.,FALSE,
 136,Scenario,You need to merge 3 datasets with duplicates. Solution?,UNION ALL + distinct(),
 136,MCQ,Which operation requires sorting?,UNION,UNION ALL;UNION;Neither
-137,MCQ,"What is the difference between COUNT() and SUM()?","COUNT rows vs SUM values","Aggregation type;NULL handling;Both"
-137,Fill,"To calculate total sales, use __________.","SUM",
+137,MCQ,What is the difference between COUNT() and SUM()?,COUNT rows vs SUM values,Aggregation type;NULL handling;Both
+137,Fill,"To calculate total sales, use __________.",SUM,
 137,TrueFalse,COUNT(column) includes NULL values.,FALSE,
 137,Scenario,You need to count distinct customers. Solution?,COUNT(DISTINCT customer_id),
 137,MCQ,Which aggregate ignores NULLs?,Both,COUNT;SUM;Both
-138,MCQ,"What is the difference between RANK() and ROW_NUMBER()?","RANK leaves gaps for ties, ROW_NUMBER gives unique numbers","Tie handling;Output;Both"
-138,Fill,"To assign consecutive ranks without gaps, use __________.","DENSE_RANK",
+138,MCQ,What is the difference between RANK() and ROW_NUMBER()?,"RANK leaves gaps for ties, ROW_NUMBER gives unique numbers",Tie handling;Output;Both
+138,Fill,"To assign consecutive ranks without gaps, use __________.",DENSE_RANK,
 138,TrueFalse,ROW_NUMBER is deterministic without ORDER BY.,FALSE,
 138,Scenario,You need top 3 salespeople per region. Solution?,ROW_NUMBER() with PARTITION BY,
 138,MCQ,Which function handles ties identically?,RANK and DENSE_RANK,ROW_NUMBER;RANK;DENSE_RANK
-139,MCQ,"What is the difference between managed and external tables?","Managed tables drop data on deletion, external tables keep files","Data lifecycle;Storage control;Both"
-139,Fill,"To retain files after table drop, create __________ table.","external",
+139,MCQ,What is the difference between managed and external tables?,"Managed tables drop data on deletion, external tables keep files",Data lifecycle;Storage control;Both
+139,Fill,"To retain files after table drop, create __________ table.",external,
 139,TrueFalse,Managed tables are always preferable.,FALSE,
 139,Scenario,You need to share files between Hive/Spark. Solution?,External table,
 139,MCQ,Which table type controls both metadata and files?,Managed,External;Managed;Neither
-140,MCQ,"What is the difference between narrow and wide transformations?","Narrow doesn't require shuffle, wide does","Shuffle requirement;Data locality;Both"
-140,Fill,"Examples of narrow transformations include __________.","filter(), map()",
+140,MCQ,What is the difference between narrow and wide transformations?,"Narrow doesn't require shuffle, wide does",Shuffle requirement;Data locality;Both
+140,Fill,Examples of narrow transformations include __________.,"filter(), map()",
 140,TrueFalse,join() is always a wide transformation.,FALSE,
 140,Scenario,Your job has excessive shuffling. How to optimize?,Minimize wide transformations,
 140,MCQ,Which operation is always narrow?,map(),join();map();sample()
-141,MCQ,"What is the difference between map() and mapPartitions()?","map() processes element-wise, mapPartitions() processes entire partitions","Granularity;Memory usage;Both"
-141,Fill,"For expensive setup per partition, use __________.","mapPartitions()",
+141,MCQ,What is the difference between map() and mapPartitions()?,"map() processes element-wise, mapPartitions() processes entire partitions",Granularity;Memory usage;Both
+141,Fill,"For expensive setup per partition, use __________.",mapPartitions(),
 141,TrueFalse,mapPartitions() always outperforms map().,FALSE,
 141,Scenario,Your transformation requires DB connection per partition. Solution?,Use mapPartitions(),
 141,MCQ,Which operation gives access to partition iterator?,mapPartitions(),map();mapPartitions();both
-142,MCQ,"What is the purpose of replication factor in HDFS?","Fault tolerance through data duplication","Data redundancy;Fault tolerance;Both"
-142,Fill,"The default HDFS replication factor is __________.","3",
+142,MCQ,What is the purpose of replication factor in HDFS?,Fault tolerance through data duplication,Data redundancy;Fault tolerance;Both
+142,Fill,The default HDFS replication factor is __________.,3,
 142,TrueFalse,Higher replication improves compute performance.,FALSE,
 142,Scenario,Your cluster has frequent disk failures. How to adjust?,Increase replication factor,
 142,MCQ,Which HDFS component manages replication?,NameNode,DataNode;NameNode;Client
-143,MCQ,"What are NameNodes and DataNodes in HDFS?","NameNode manages metadata, DataNode stores actual blocks","Role in architecture;Data handling;Both"
-143,Fill,"For HDFS high availability, configure __________.","multiple NameNodes",
+143,MCQ,What are NameNodes and DataNodes in HDFS?,"NameNode manages metadata, DataNode stores actual blocks",Role in architecture;Data handling;Both
+143,Fill,"For HDFS high availability, configure __________.",multiple NameNodes,
 143,TrueFalse,DataNodes serve file metadata to clients.,FALSE,
 143,Scenario,Your NameNode crashes. Impact?,Metadata unavailable until recovery,
 143,MCQ,Which component stores block locations?,NameNode,DataNode;NameNode;Both
-144,MCQ,"What is the difference between external and managed tables in Hive?","Managed tables control lifecycle, external tables don't","Data ownership;File management;Both"
-144,Fill,"To share files between systems, use __________ tables.","external",
+144,MCQ,What is the difference between external and managed tables in Hive?,"Managed tables control lifecycle, external tables don't",Data ownership;File management;Both
+144,Fill,"To share files between systems, use __________ tables.",external,
 144,TrueFalse,Dropping managed tables deletes underlying files.,TRUE,
 144,Scenario,You need Spark and Hive to access same files. Solution?,Create external table,
 144,MCQ,Which table type appears in both Spark and Hive catalogs?,External tables,Managed;External;Neither
-145,MCQ,"What is predicate pushdown?","Filter data at storage level before processing","Query optimization;Early filtering;Both"
-145,Fill,"To enable predicate pushdown in Parquet, set __________.","spark.sql.parquet.filterPushdown=true",
+145,MCQ,What is predicate pushdown?,Filter data at storage level before processing,Query optimization;Early filtering;Both
+145,Fill,"To enable predicate pushdown in Parquet, set __________.",spark.sql.parquet.filterPushdown=true,
 145,TrueFalse,Predicate pushdown works with CSV files.,FALSE,
 145,Scenario,Your query reads 100GB but only needs 1GB. Solution?,Enable predicate pushdown,
 145,MCQ,Which file format benefits most from predicate pushdown?,Parquet,JSON;CSV;Parquet
-146,MCQ,"What is shuffling in Spark?","Data redistribution between partitions","Network transfer;Stage boundary;Both"
-146,Fill,"To reduce shuffle size, use __________.","reduceByKey() instead of groupByKey()",
+146,MCQ,What is shuffling in Spark?,Data redistribution between partitions,Network transfer;Stage boundary;Both
+146,Fill,"To reduce shuffle size, use __________.",reduceByKey() instead of groupByKey(),
 146,TrueFalse,Shuffling occurs for narrow transformations.,FALSE,
 146,Scenario,Your job slows during cross-node data transfer. Solution?,Minimize shuffles,
 146,MCQ,Which operation typically causes shuffles?,join(),map();filter();join()
-147,MCQ,"What is data skew in Spark?","Uneven data distribution across partitions","Partition imbalance;Performance impact;Both"
-147,Fill,"To handle skew in joins, use __________.","salting technique",
+147,MCQ,What is data skew in Spark?,Uneven data distribution across partitions,Partition imbalance;Performance impact;Both
+147,Fill,"To handle skew in joins, use __________.",salting technique,
 147,TrueFalse,Data skew only affects reduce operations.,FALSE,
 147,Scenario,One task takes hours while others finish in minutes. Solution?,Address data skew,
 147,MCQ,Which join strategy handles skew best?,Sort-merge join with skew handling,Broadcast;Sort-merge;Hash
-148,MCQ,"What are jobs, stages, and tasks in Spark?","Job = action, stage = shuffle boundary, task = unit of execution","Granularity;DAG breakdown;Both"
-148,Fill,"To view stage details, check __________.","Spark UI",
+148,MCQ,"What are jobs, stages, and tasks in Spark?","Job = action, stage = shuffle boundary, task = unit of execution",Granularity;DAG breakdown;Both
+148,Fill,"To view stage details, check __________.",Spark UI,
 148,TrueFalse,Stages can execute in parallel.,TRUE,
 148,Scenario,Your job has 200 tasks but only 4 executors. Solution?,Increase executors,
 148,MCQ,Which contains actual computation logic?,Tasks,Jobs;Stages;Tasks
-149,MCQ,"What are transformations and actions in Spark?","Transformations build DAG, actions trigger execution","Lazy vs eager;DAG handling;Both"
-149,Fill,"Examples of actions include __________.","count(), collect()",
+149,MCQ,What are transformations and actions in Spark?,"Transformations build DAG, actions trigger execution",Lazy vs eager;DAG handling;Both
+149,Fill,Examples of actions include __________.,"count(), collect()",
 149,TrueFalse,DataFrame.show() is a transformation.,FALSE,
 149,Scenario,Your code runs slowly with many collect() calls. Solution?,Minimize actions,
 149,MCQ,Which operation triggers job execution?,Actions,Transformations;Actions;Both
-150,MCQ,"What is the difference between DataFrames, Datasets, and RDDs?","Structured APIs vs low-level, type-safe vs untyped","API level;Type safety;Both"
-150,Fill,"For Java/Scala type safety, use __________.","Datasets",
+150,MCQ,"What is the difference between DataFrames, Datasets, and RDDs?","Structured APIs vs low-level, type-safe vs untyped",API level;Type safety;Both
+150,Fill,"For Java/Scala type safety, use __________.",Datasets,
 150,TrueFalse,DataFrames are Dataset[Row] in Scala.,TRUE,
 150,Scenario,Your RDD code needs better performance. Solution?,Convert to DataFrame,
 150,MCQ,Which API provides Catalyst optimization?,DataFrames and Datasets,RDDs;DataFrames/Datasets;None
-151,MCQ,"What is the difference between COUNT() and COUNT(1) in SQL?","No difference - both count all rows","Performance;NULL handling;Syntax"
-151,Fill,"To count non-NULL values in a column, use __________.","COUNT(column_name)",
+151,MCQ,What is the difference between COUNT() and COUNT(1) in SQL?,No difference - both count all rows,Performance;NULL handling;Syntax
+151,Fill,"To count non-NULL values in a column, use __________.",COUNT(column_name),
 151,TrueFalse,COUNT(*) is faster than COUNT(1).,FALSE,
 151,Scenario,You need to count all rows including NULLs. Solution?,Use COUNT(*),
 151,MCQ,Which count method is most explicit?,COUNT(*),COUNT(1);COUNT(*);Same
-152,MCQ,"What is the difference between Hive and Spark SQL?","Hive uses MapReduce, Spark SQL uses in-memory processing","Execution engine;Performance;Both"
-152,Fill,"To run Hive queries on Spark, use __________.","SparkSession.sql()",
+152,MCQ,What is the difference between Hive and Spark SQL?,"Hive uses MapReduce, Spark SQL uses in-memory processing",Execution engine;Performance;Both
+152,Fill,"To run Hive queries on Spark, use __________.",SparkSession.sql(),
 152,TrueFalse,Spark SQL supports all Hive UDFs.,TRUE,
 152,Scenario,Your Hive queries are too slow. Solution?,Migrate to Spark SQL,
 152,MCQ,Which provides better interactive query performance?,Spark SQL,Hive;Spark SQL;Same
-153,MCQ,"What is the difference between ORDER BY and SORT BY in Spark SQL?","ORDER BY is global sort, SORT BY is per partition","Sort scope;Performance;Both"
-153,Fill,"For distributed sorting, use __________.","SORT BY",
+153,MCQ,What is the difference between ORDER BY and SORT BY in Spark SQL?,"ORDER BY is global sort, SORT BY is per partition",Sort scope;Performance;Both
+153,Fill,"For distributed sorting, use __________.",SORT BY,
 153,TrueFalse,ORDER BY causes data skew.,TRUE,
 153,Scenario,You need sorted data but want to avoid single reducer. Solution?,Use SORT BY,
 153,MCQ,Which sort operation requires single partition?,ORDER BY,SORT BY;ORDER BY;Neither
-154,MCQ,"What is the difference between caching and persist() in Spark?","persist() allows storage level customization","Flexibility;Storage levels;Both"
-154,Fill,"To cache in memory only, use __________.","persist(MEMORY_ONLY)",
+154,MCQ,What is the difference between caching and persist() in Spark?,persist() allows storage level customization,Flexibility;Storage levels;Both
+154,Fill,"To cache in memory only, use __________.",persist(MEMORY_ONLY),
 154,TrueFalse,cache() uses MEMORY_AND_DISK storage level.,FALSE,
 154,Scenario,Your cached RDDs are being evicted. Solution?,Use persist(DISK_ONLY),
 154,MCQ,Which method provides more storage options?,persist(),cache();persist();Same
-155,MCQ,"What is the difference between broadcast and accumulator variables?","Broadcast is read-only, accumulator is write-only","Direction;Use case;Both"
-155,Fill,"To distribute lookup tables, use __________.","broadcast()",
+155,MCQ,What is the difference between broadcast and accumulator variables?,"Broadcast is read-only, accumulator is write-only",Direction;Use case;Both
+155,Fill,"To distribute lookup tables, use __________.",broadcast(),
 155,TrueFalse,Accumulators can be read by executors.,FALSE,
 155,Scenario,You need to count errors across executors. Solution?,Use accumulator,
 155,MCQ,Which variable type allows worker updates?,Accumulator,Broadcast;Accumulator;Neither
-156,MCQ,"What is the difference between INNER JOIN and LEFT JOIN?","INNER keeps matches only, LEFT keeps all left rows","Inclusion logic;NULL handling;Both"
-156,Fill,"To find records with no matches, use __________.","LEFT JOIN WHERE right.key IS NULL",
+156,MCQ,What is the difference between INNER JOIN and LEFT JOIN?,"INNER keeps matches only, LEFT keeps all left rows",Inclusion logic;NULL handling;Both
+156,Fill,"To find records with no matches, use __________.",LEFT JOIN WHERE right.key IS NULL,
 156,TrueFalse,RIGHT JOIN is more common than LEFT JOIN.,FALSE,
 156,Scenario,You need all customers including those without orders. Solution?,Use LEFT JOIN,
 156,MCQ,Which join preserves all right table rows?,RIGHT JOIN,INNER;LEFT;RIGHT
-157,MCQ,"What is the difference between WHERE and HAVING?","WHERE filters rows, HAVING filters groups","Timing;Granularity;Both"
-157,Fill,"To filter after aggregation, use __________.","HAVING",
+157,MCQ,What is the difference between WHERE and HAVING?,"WHERE filters rows, HAVING filters groups",Timing;Granularity;Both
+157,Fill,"To filter after aggregation, use __________.",HAVING,
 157,TrueFalse,WHERE can reference aggregate functions.,FALSE,
 157,Scenario,You need to filter groups by average value. Solution?,Use HAVING,
 157,MCQ,Which clause executes first in query processing?,WHERE,HAVING;WHERE;GROUP BY
-158,MCQ,"What is the difference between static and dynamic partitioning in Hive?","Static uses fixed values, dynamic determines at runtime","Partition value source;Performance;Both"
-158,Fill,"To automatically create partitions, use __________.","dynamic partitioning",
+158,MCQ,What is the difference between static and dynamic partitioning in Hive?,"Static uses fixed values, dynamic determines at runtime",Partition value source;Performance;Both
+158,Fill,"To automatically create partitions, use __________.",dynamic partitioning,
 158,TrueFalse,Dynamic partitioning requires additional queries.,FALSE,
 158,Scenario,You have daily data with new date partitions. Solution?,Use dynamic partitioning,
 158,MCQ,Which partitioning method is more flexible?,Dynamic,Static;Dynamic;Same
-159,MCQ,"What is the difference between local and distributed mode in Spark?","Local runs in single JVM, distributed uses cluster","Execution environment;Resource usage;Both"
-159,Fill,"For development testing, use __________ mode.","local",
+159,MCQ,What is the difference between local and distributed mode in Spark?,"Local runs in single JVM, distributed uses cluster",Execution environment;Resource usage;Both
+159,Fill,"For development testing, use __________ mode.",local,
 159,TrueFalse,Local mode supports all Spark features.,TRUE,
 159,Scenario,Your prototype fails when deployed to cluster. Solution?,Test in distributed mode,
 159,MCQ,Which mode requires cluster setup?,Distributed,Local;Distributed;Both
-160,MCQ,"What is the difference between Spark SQL and Hive on Spark?","Spark SQL is native, Hive on Spark is Hive with Spark backend","Architecture;Compatibility;Both"
-160,Fill,"For existing Hive queries with Spark performance, use __________.","Hive on Spark",
+160,MCQ,What is the difference between Spark SQL and Hive on Spark?,"Spark SQL is native, Hive on Spark is Hive with Spark backend",Architecture;Compatibility;Both
+160,Fill,"For existing Hive queries with Spark performance, use __________.",Hive on Spark,
 160,TrueFalse,Spark SQL supports Hive metastore.,TRUE,
 160,Scenario,Your team has hundreds of Hive queries to migrate. Solution?,Use Hive on Spark,
 160,MCQ,Which provides better integration with Spark ecosystem?,Spark SQL,Hive on Spark;Spark SQL;Same
-161,MCQ,"What is the difference between temporary and global temporary views in Spark?","Temporary views are session-scoped, global temporary views are cluster-scoped","Scope;Visibility;Both"
-161,Fill,"To create a view accessible across all Spark sessions, use __________.","CREATE GLOBAL TEMPORARY VIEW",
+161,MCQ,What is the difference between temporary and global temporary views in Spark?,"Temporary views are session-scoped, global temporary views are cluster-scoped",Scope;Visibility;Both
+161,Fill,"To create a view accessible across all Spark sessions, use __________.",CREATE GLOBAL TEMPORARY VIEW,
 161,TrueFalse,Global temporary views persist after cluster restart.,FALSE,
 161,Scenario,You need a temporary table accessible to all users in current cluster. Solution?,Create global temporary view,
 161,MCQ,Which view type is tied to a single Spark session?,Temporary view,Global temporary view;Temporary view;Neither
-162,MCQ,"What is the difference between Spark's cache() and persist() methods?","cache() uses MEMORY_ONLY, persist() allows custom storage levels","Default behavior;Flexibility;Both"
-162,Fill,"To cache data in memory and spill to disk, use __________.","persist(MEMORY_AND_DISK)",
+162,MCQ,What is the difference between Spark's cache() and persist() methods?,"cache() uses MEMORY_ONLY, persist() allows custom storage levels",Default behavior;Flexibility;Both
+162,Fill,"To cache data in memory and spill to disk, use __________.",persist(MEMORY_AND_DISK),
 162,TrueFalse,cache() is more memory-efficient than persist().,FALSE,
 162,Scenario,Your cached DataFrame is being recomputed due to memory pressure. Solution?,Use persist(DISK_ONLY),
 162,MCQ,Which storage level provides fault tolerance?,MEMORY_AND_DISK_2,MEMORY_ONLY;MEMORY_AND_DISK_2;DISK_ONLY
-163,MCQ,"What is the difference between Spark's subtract() and except() methods?","subtract() is RDD-only, except() is DataFrame/Dataset","API compatibility;Functionality;Both"
-163,Fill,"To remove DataFrame rows present in another DataFrame, use __________.","except()",
+163,MCQ,What is the difference between Spark's subtract() and except() methods?,"subtract() is RDD-only, except() is DataFrame/Dataset",API compatibility;Functionality;Both
+163,Fill,"To remove DataFrame rows present in another DataFrame, use __________.",except(),
 163,TrueFalse,subtract() preserves duplicates in the result.,TRUE,
 163,Scenario,You need to find records in DF1 not present in DF2 using DataFrames. Solution?,Use except(),
 163,MCQ,Which method is available for both RDDs and DataFrames?,intersection(),subtract();except();intersection()
-164,MCQ,"What is the difference between Spark's map() and flatMap() transformations?","map() 1:1, flatMap() 1:many","Output cardinality;Use cases;Both"
-164,Fill,"To transform each input into multiple outputs, use __________.","flatMap()",
+164,MCQ,What is the difference between Spark's map() and flatMap() transformations?,"map() 1:1, flatMap() 1:many",Output cardinality;Use cases;Both
+164,Fill,"To transform each input into multiple outputs, use __________.",flatMap(),
 164,TrueFalse,flatMap() requires returning an Iterable.,TRUE,
 164,Scenario,You need to split sentences into individual words. Solution?,Use flatMap(),
 164,MCQ,Which transformation always changes the partition count?,Neither,map();flatMap();Neither
-165,MCQ,"What is the difference between Spark SQL's explode() and posexplode() functions?","posexplode() includes position index","Output format;Functionality;Both"
-165,Fill,"To explode an array with element positions, use __________.","posexplode()",
+165,MCQ,What is the difference between Spark SQL's explode() and posexplode() functions?,posexplode() includes position index,Output format;Functionality;Both
+165,Fill,"To explode an array with element positions, use __________.",posexplode(),
 165,TrueFalse,explode() preserves null values in the input.,FALSE,
 165,Scenario,You need to transform JSON arrays while keeping track of element order. Solution?,Use posexplode(),
 165,MCQ,Which function creates multiple rows from array elements?,Both,explode();posexplode();Both
-166,MCQ,"What is the difference between Spark's repartition() and coalesce()?","repartition() does full shuffle, coalesce() minimizes shuffles","Shuffle behavior;Use cases;Both"
-166,Fill,"To reduce partitions with minimal shuffling, use __________.","coalesce()",
+166,MCQ,What is the difference between Spark's repartition() and coalesce()?,"repartition() does full shuffle, coalesce() minimizes shuffles",Shuffle behavior;Use cases;Both
+166,Fill,"To reduce partitions with minimal shuffling, use __________.",coalesce(),
 166,TrueFalse,repartition() can increase or decrease partition count.,TRUE,
 166,Scenario,Your DataFrame has 1000 uneven partitions after filtering. Solution?,Use repartition(200),
 166,MCQ,Which operation is more expensive for increasing partitions?,repartition(),coalesce();repartition();Same
-167,MCQ,"What is the difference between Spark's saveAsTable() and insertInto() methods?","saveAsTable() creates/overwrites tables, insertInto() appends to existing","Write behavior;Table creation;Both"
-167,Fill,"To append data to an existing managed table, use __________.","insertInto()",
+167,MCQ,What is the difference between Spark's saveAsTable() and insertInto() methods?,"saveAsTable() creates/overwrites tables, insertInto() appends to existing",Write behavior;Table creation;Both
+167,Fill,"To append data to an existing managed table, use __________.",insertInto(),
 167,TrueFalse,saveAsTable() automatically creates the table if missing.,TRUE,
 167,Scenario,You need to add daily batches to a reporting table. Solution?,Use insertInto(),
 167,MCQ,Which method preserves existing table partitioning?,insertInto(),saveAsTable();insertInto();Both
-168,MCQ,"What is the difference between Spark's broadcast join and sort-merge join?","broadcast avoids shuffle for small tables, sort-merge handles large tables","Performance;Scale;Both"
-168,Fill,"To force broadcast join when auto-detection fails, use __________.","broadcast() hint",
+168,MCQ,What is the difference between Spark's broadcast join and sort-merge join?,"broadcast avoids shuffle for small tables, sort-merge handles large tables",Performance;Scale;Both
+168,Fill,"To force broadcast join when auto-detection fails, use __________.",broadcast() hint,
 168,TrueFalse,Broadcast join works well for tables >10GB.,FALSE,
 168,Scenario,Your join is slow between a 100GB table and 10MB reference table. Solution?,Use broadcast join,
 168,MCQ,Which join strategy doesn't require shuffling?,Broadcast join,Sort-merge;Broadcast;Shuffle hash
-169,MCQ,"What is the difference between Spark's union() and unionByName()?","unionByName matches columns by name, union() by position","Column matching;Safety;Both"
-169,Fill,"To safely combine DataFrames with different column order, use __________.","unionByName()",
+169,MCQ,What is the difference between Spark's union() and unionByName()?,"unionByName matches columns by name, union() by position",Column matching;Safety;Both
+169,Fill,"To safely combine DataFrames with different column order, use __________.",unionByName(),
 169,TrueFalse,union() requires identical schemas in the same order.,TRUE,
 169,Scenario,You need to combine monthly datasets where columns were reordered. Solution?,Use unionByName(),
 169,MCQ,Which union method is more resilient to schema changes?,unionByName(),union();unionByName();Both
-170,MCQ,"What is the difference between Spark's withColumn() and withColumnRenamed()?","withColumn() adds/replaces, withColumnRenamed() just renames","Functionality;Use cases;Both"
-170,Fill,"To transform an existing column, use __________.","withColumn()",
+170,MCQ,What is the difference between Spark's withColumn() and withColumnRenamed()?,"withColumn() adds/replaces, withColumnRenamed() just renames",Functionality;Use cases;Both
+170,Fill,"To transform an existing column, use __________.",withColumn(),
 170,TrueFalse,withColumn() can't change a column's data type.,FALSE,
 170,Scenario,You need to convert string dates to timestamps. Solution?,Use withColumn(),
 170,MCQ,Which method creates a new DataFrame version?,Both,withColumn();withColumnRenamed();Both
-181,MCQ,"How do you use Azure Synapse Analytics alongside ADF for orchestration and warehousing?","ADF orchestrates pipelines, Synapse handles data warehousing","Separation of concerns;ADF for ETL;Synapse for SQL;All"
-181,Fill,"To pass data between ADF and Synapse, use __________.","Synapse linked service",
+181,MCQ,How do you use Azure Synapse Analytics alongside ADF for orchestration and warehousing?,"ADF orchestrates pipelines, Synapse handles data warehousing",Separation of concerns;ADF for ETL;Synapse for SQL;All
+181,Fill,"To pass data between ADF and Synapse, use __________.",Synapse linked service,
 181,TrueFalse,ADF can directly query Synapse dedicated SQL pools.,TRUE,
 181,Scenario,You need to orchestrate a daily ETL process loading to Synapse. Solution?,ADF pipeline with Synapse activity,
 181,MCQ,Which ADF activity executes Synapse SQL scripts?,Synapse Notebook activity,Stored Procedure;Synapse Notebook;Spark Job
-182,MCQ,"How would you handle incremental loads in ADF?","Use watermark columns or change tracking","Delta loading;Change detection;Both"
-182,Fill,"For incremental loads, configure __________ trigger.","tumbling window",
+182,MCQ,How would you handle incremental loads in ADF?,Use watermark columns or change tracking,Delta loading;Change detection;Both
+182,Fill,"For incremental loads, configure __________ trigger.",tumbling window,
 182,TrueFalse,Incremental loads always require stored procedures.,FALSE,
 182,Scenario,Your daily pipeline should only process new records. Solution?,Implement watermark pattern,
 182,MCQ,Which ADF feature identifies new/changed rows?,Lookup activity,Change data capture;Lookup;Metadata-driven
-183,MCQ,"What are best practices for optimizing ADF pipelines?","Use parallel activities, minimize staging","Performance tuning;Cost optimization;Both"
-183,Fill,"To monitor pipeline performance, check __________.","execution details in Monitor hub",
+183,MCQ,What are best practices for optimizing ADF pipelines?,"Use parallel activities, minimize staging",Performance tuning;Cost optimization;Both
+183,Fill,"To monitor pipeline performance, check __________.",execution details in Monitor hub,
 183,TrueFalse,Sequential activities always slow pipelines.,TRUE,
 183,Scenario,Your pipeline has 20 sequential copy activities. How to optimize?,Parallelize with fan-out pattern,
 183,MCQ,Which ADF pattern reduces copy operations?,Mapping data flows,Copy activity;Mapping data flows;Stored procedure
-184,MCQ,"What are common optimizations for ADF pipelines?","Partition sources, use DIUs","Throughput;Resource allocation;Both"
-184,Fill,"To increase copy parallelism, adjust __________.","DIU (Data Integration Units)",
+184,MCQ,What are common optimizations for ADF pipelines?,"Partition sources, use DIUs",Throughput;Resource allocation;Both
+184,Fill,"To increase copy parallelism, adjust __________.",DIU (Data Integration Units),
 184,TrueFalse,Higher DIUs always improve performance.,FALSE,
 184,Scenario,Your data copy takes 4 hours. How to optimize?,Increase DIUs + partition source,
 184,MCQ,Which metric determines copy parallelism?,DIUs,CPU;Memory;DIUs
-185,MCQ,"What are mapping data flows and wrangling data flows in ADF?","Mapping: code-free ETL, Wrangling: Power Query","Transformation type;UI;Both"
-185,Fill,"To use Power Query in ADF, create __________.","wrangling data flow",
+185,MCQ,What are mapping data flows and wrangling data flows in ADF?,"Mapping: code-free ETL, Wrangling: Power Query",Transformation type;UI;Both
+185,Fill,"To use Power Query in ADF, create __________.",wrangling data flow,
 185,TrueFalse,Mapping data flows run on Spark clusters.,TRUE,
 185,Scenario,You need visual ETL without coding. Solution?,Use mapping data flow,
 185,MCQ,Which data flow type supports parameterization?,Mapping data flows,Wrangling;Mapping;Neither
-186,MCQ,"What is Azure Data Factory and what activities have you worked on?","Cloud ETL service supporting 90+ connectors","Integration;Orchestration;Both"
-186,Fill,"To execute a SQL stored procedure in ADF, use __________.","Stored Procedure activity",
+186,MCQ,What is Azure Data Factory and what activities have you worked on?,Cloud ETL service supporting 90+ connectors,Integration;Orchestration;Both
+186,Fill,"To execute a SQL stored procedure in ADF, use __________.",Stored Procedure activity,
 186,TrueFalse,ADF can trigger Databricks jobs.,TRUE,
 186,Scenario,You need to coordinate multiple cloud services. Solution?,ADF pipeline with activities,
 186,MCQ,Which ADF activity transforms data without code?,Mapping data flow,Spark;Copy;Mapping data flow
-187,MCQ,"What is integration runtime in ADF?","Compute infrastructure for data movement","Execution environment;Connectivity;Both"
-187,Fill,"For VNET-connected resources, use __________ IR.","self-hosted",
+187,MCQ,What is integration runtime in ADF?,Compute infrastructure for data movement,Execution environment;Connectivity;Both
+187,Fill,"For VNET-connected resources, use __________ IR.",self-hosted,
 187,TrueFalse,AutoResolve IR works with on-premises data.,FALSE,
 187,Scenario,You need to access on-prem SQL Server. Solution?,Deploy self-hosted IR,
 187,MCQ,Which IR type provides serverless execution?,Azure IR,Self-hosted;Azure;SSIS
-188,MCQ,"What triggers can you use in Azure Data Factory to handle incremental loads?","Tumbling window, storage events","Schedule-based;Event-based;Both"
-188,Fill,"To trigger on blob creation, use __________ trigger.","storage event",
+188,MCQ,What triggers can you use in Azure Data Factory to handle incremental loads?,"Tumbling window, storage events",Schedule-based;Event-based;Both
+188,Fill,"To trigger on blob creation, use __________ trigger.",storage event,
 188,TrueFalse,Tumbling window triggers support dependencies.,TRUE,
 188,Scenario,You need hourly loads with failure handling. Solution?,Tumbling window trigger,
 188,MCQ,Which trigger type is time-based?,Schedule,Tumbling window;Schedule;Event
-189,MCQ,"How do you detect consecutive wins or events using window functions?","LAG()/LEAD() with date comparison","Pattern detection;Gap analysis;Both"
-189,Fill,"To find 3+ consecutive wins, use __________ with date diff.","LAG()",
+189,MCQ,How do you detect consecutive wins or events using window functions?,LAG()/LEAD() with date comparison,Pattern detection;Gap analysis;Both
+189,Fill,"To find 3+ consecutive wins, use __________ with date diff.",LAG(),
 189,TrueFalse,DENSE_RANK() detects consecutive events.,FALSE,
 189,Scenario,Identify customers with 3+ consecutive purchases. Solution?,LAG() with date difference,
 189,MCQ,Which function compares current/previous rows?,LAG(),RANK();LEAD();LAG()
-190,MCQ,"How would you get top 3 salaries per department using window functions?","PARTITION BY dept + RANK()","Ranking;Filtering;Both"
-190,Fill,"To exclude ties from top-N results, use __________.","ROW_NUMBER()",
+190,MCQ,How would you get top 3 salaries per department using window functions?,PARTITION BY dept + RANK(),Ranking;Filtering;Both
+190,Fill,"To exclude ties from top-N results, use __________.",ROW_NUMBER(),
 190,TrueFalse,NTILE() works better than RANK() for top-N.,FALSE,
 190,Scenario,You need department leaders with tie handling. Solution?,DENSE_RANK() with filter,
 190,MCQ,Which function handles ties in rankings?,RANK(),ROW_NUMBER();RANK();DENSE_RANK()
-191,MCQ,"How would you write a SQL query to find the employee with the second highest salary?","Subquery with DENSE_RANK() or LIMIT/OFFSET","Ranking;Filtering;Both"
-191,Fill,"In PostgreSQL, use __________ for second highest.","LIMIT 1 OFFSET 1",
-191,TrueFalse,ORDER BY salary DESC LIMIT 2,1 works in all SQL dialects.,FALSE,
-191,Scenario,Find second highest salary in MySQL. Solution?,ORDER BY salary DESC LIMIT 1,1,
+191,MCQ,How would you write a SQL query to find the employee with the second highest salary?,Subquery with DENSE_RANK() or LIMIT/OFFSET,Ranking;Filtering;Both
+191,Fill,"In PostgreSQL, use __________ for second highest.",LIMIT 1 OFFSET 1,
+191,TrueFalse,ORDER BY salary DESC LIMIT 2,1 works in all SQL dialects.,FALSE
+191,Scenario,Find second highest salary in MySQL. Solution?,ORDER BY salary DESC LIMIT 1,1
 191,MCQ,Which approach is most portable across databases?,DENSE_RANK(),LIMIT/OFFSET;TOP-N;DENSE_RANK()
-192,MCQ,"What is the difference between RANK() and ROW_NUMBER() in SQL?","RANK() leaves gaps for ties, ROW_NUMBER() gives unique numbers","Tie handling;Output;Both"
-192,Fill,"To assign unique row IDs regardless of ties, use __________.","ROW_NUMBER()",
+192,MCQ,What is the difference between RANK() and ROW_NUMBER() in SQL?,"RANK() leaves gaps for ties, ROW_NUMBER() gives unique numbers",Tie handling;Output;Both
+192,Fill,"To assign unique row IDs regardless of ties, use __________.",ROW_NUMBER(),
 192,TrueFalse,RANK() always produces contiguous numbers.,FALSE,
 192,Scenario,You need a unique identifier for pagination. Solution?,Use ROW_NUMBER(),
 192,MCQ,Which function handles ties identically?,DENSE_RANK(),RANK();ROW_NUMBER();DENSE_RANK()
-201_situational,MCQ,"What AWS services are optimal for serverless data pipelines?","Lambda for processing, S3 for storage, Step Functions for orchestration","EC2;Lambda+S3+Step Functions;RDS"
-201_situational,Fill,"To trigger AWS pipeline stages automatically, use __________.","EventBridge rules",
-201_situational,TrueFalse,Serverless always costs less than provisioned services.,FALSE,
-201_situational,Scenario,Your pipeline needs to process files upon S3 upload. Solution?,S3 Event Notification → Lambda,
-201_situational,MCQ,Which AWS service handles workflow orchestration best?,Step Functions,EventBridge;Step Functions;Lambda
-202,MCQ,"How does Step Functions improve pipeline reliability?","Built-in retries and error handling","Retry logic;State management;Both"
-202,Fill,"To visualize serverless workflows, use __________.","Step Functions state machine",
+201,MCQ,What AWS services are optimal for serverless data pipelines?,"Lambda for processing, S3 for storage, Step Functions for orchestration",EC2;Lambda+S3+Step Functions;RDS
+201,Fill,"To trigger AWS pipeline stages automatically, use __________.",EventBridge rules,
+201,TrueFalse,Serverless always costs less than provisioned services.,FALSE,
+201,Scenario,Your pipeline needs to process files upon S3 upload. Solution?,S3 Event Notification → Lambda,
+201,MCQ,Which AWS service handles workflow orchestration best?,Step Functions,EventBridge;Step Functions;Lambda
+202,MCQ,How does Step Functions improve pipeline reliability?,Built-in retries and error handling,Retry logic;State management;Both
+202,Fill,"To visualize serverless workflows, use __________.",Step Functions state machine,
 202,TrueFalse,Step Functions can directly execute Glue jobs.,TRUE,
 202,Scenario,Your ETL pipeline needs conditional error handling. Solution?,Implement Step Functions state machine,
 202,MCQ,Which AWS service provides built-in workflow visualization?,Step Functions,EventBridge;Step Functions;CloudWatch
-203,MCQ,"Why use EventBridge for scheduling?","Cron-like rules with event filtering","Precision scheduling;Event filtering;Both"
-203,Fill,"To trigger a pipeline every 15 minutes, configure __________.","rate(15 minutes)",
+203,MCQ,Why use EventBridge for scheduling?,Cron-like rules with event filtering,Precision scheduling;Event filtering;Both
+203,Fill,"To trigger a pipeline every 15 minutes, configure __________.",rate(15 minutes),
 203,TrueFalse,EventBridge can only trigger Lambda functions.,FALSE,
 203,Scenario,You need daily pipeline runs with payload customization. Solution?,EventBridge scheduled rule,
 203,MCQ,Which scheduling service integrates with 200+ AWS services?,EventBridge,CloudWatch;EventBridge;Lambda
-204,MCQ,"When should broadcast joins be used?","When one dataset fits in executor memory","Small table size;Join performance;Both"
-204,Fill,"To force broadcast join in Spark, use __________.","broadcast() hint",
+204,MCQ,When should broadcast joins be used?,When one dataset fits in executor memory,Small table size;Join performance;Both
+204,Fill,"To force broadcast join in Spark, use __________.",broadcast() hint,
 204,TrueFalse,Broadcast joins work well for large table joins.,FALSE,
 204,Scenario,Your 100GB ↔ 10MB join is slow. Solution?,Broadcast the smaller table,
 204,MCQ,Which join minimizes shuffling?,Broadcast join,Sort-merge;Broadcast;Shuffle hash
-205,MCQ,"What's essential for SCD Type 2 implementation?","Effective dating and version tracking","Version columns;Date ranges;Both"
-205,Fill,"To track current vs historical records, add __________ columns.","is_current and version",
+205,MCQ,What's essential for SCD Type 2 implementation?,Effective dating and version tracking,Version columns;Date ranges;Both
+205,Fill,"To track current vs historical records, add __________ columns.",is_current and version,
 205,TrueFalse,SCD Type 2 requires deleting old records.,FALSE,
 205,Scenario,You need to track customer address changes over time. Solution?,SCD Type 2 with effective dates,
 205,MCQ,Which SCD type preserves full history?,Type 2,Type 1;Type 2;Type 3
-206,MCQ,"Best practice for data quality checks?","Implement at ingestion and transformation","Validation layers;Automated checks;Both"
-206,Fill,"To identify duplicates, use __________.","window functions with row numbering",
+206,MCQ,Best practice for data quality checks?,Implement at ingestion and transformation,Validation layers;Automated checks;Both
+206,Fill,"To identify duplicates, use __________.",window functions with row numbering,
 206,TrueFalse,Data quality checks should only run in production.,FALSE,
 206,Scenario,Your pipeline loads duplicate records daily. Solution?,Add deduplication step with checksum,
 206,MCQ,Which tool provides built-in data profiling?,Great Expectations,AWS Glue;Great Expectations;Lambda
-207,MCQ,"CI/CD essentials for data pipelines?","Version control, automated testing, deployment pipelines","Git;Testing frameworks;All"
-207,Fill,"To automate pipeline deployments, use __________.","GitHub Actions or AWS CodePipeline",
+207,MCQ,CI/CD essentials for data pipelines?,"Version control, automated testing, deployment pipelines",Git;Testing frameworks;All
+207,Fill,"To automate pipeline deployments, use __________.",GitHub Actions or AWS CodePipeline,
 207,TrueFalse,Data pipelines don't need CI/CD.,FALSE,
 207,Scenario,Your team frequently breaks production pipelines. Solution?,Implement CI/CD with staging,
 207,MCQ,Which CI/CD tool integrates with AWS best?,CodePipeline,Jenkins;CodePipeline;CircleCI
-208,MCQ,"Most impactful pipeline optimization?","Partitioning + predicate pushdown","Query planning;Resource tuning;Both"
-208,Fill,"To optimize a slow dimension table join, try __________.","broadcast join",
+208,MCQ,Most impactful pipeline optimization?,Partitioning + predicate pushdown,Query planning;Resource tuning;Both
+208,Fill,"To optimize a slow dimension table join, try __________.",broadcast join,
 208,TrueFalse,Adding more executors always helps performance.,FALSE,
 208,Scenario,Your nightly job misses SLAs. How to troubleshoot?,Analyze Spark UI for skew/shuffles,
 208,MCQ,Which optimization reduces shuffle size?,Partition pruning,Broadcast;Partition pruning;Cache
-209,MCQ,"How to handle corrupt production data?","Quarantine bad records + alert","Error handling;Data validation;Both"
-209,Fill,"To isolate bad records, use __________ pattern.","dead-letter queue",
+209,MCQ,How to handle corrupt production data?,Quarantine bad records + alert,Error handling;Data validation;Both
+209,Fill,"To isolate bad records, use __________ pattern.",dead-letter queue,
 209,TrueFalse,Corrupt data should always fail the pipeline.,FALSE,
 209,Scenario,Your pipeline crashes on malformed CSV files. Solution?,Implement schema validation + DLQ,
 209,MCQ,Which tool validates data schemas?,Spark Schema Validation,Glue;Spark Schema;Pandas
-210,MCQ,"Essential data quality checks for incremental loads?","Record counts, null checks, freshness","Completeness;Timeliness;All"
-210,Fill,"To verify no data loss during incremental load, check __________.","source vs target row counts",
+210,MCQ,Essential data quality checks for incremental loads?,"Record counts, null checks, freshness",Completeness;Timeliness;All
+210,Fill,"To verify no data loss during incremental load, check __________.",source vs target row counts,
 210,TrueFalse,Incremental loads don't need quality checks.,FALSE,
 210,Scenario,Your daily delta load has missing records. Solution?,Implement count validation,
 210,MCQ,Which metric ensures data freshness?,Load timestamp,Record count;Null rate;Timestamp
-211,MCQ,"Best pipeline monitoring approach?","Dashboards + threshold alerts","Metrics collection;Alerting;Both"
-211,Fill,"To track pipeline failures, monitor __________.","CloudWatch metrics",
+211,MCQ,Best pipeline monitoring approach?,Dashboards + threshold alerts,Metrics collection;Alerting;Both
+211,Fill,"To track pipeline failures, monitor __________.",CloudWatch metrics,
 211,TrueFalse,Monitoring should only check success/failure.,FALSE,
 211,Scenario,Your pipeline succeeds but takes 2x longer. Solution?,Set duration threshold alerts,
 211,MCQ,Which AWS service centralizes monitoring?,CloudWatch,SNS;CloudWatch;EventBridge
-212,MCQ,"Key CI/CD components for data pipelines?","Infrastructure as code, unit tests, canary deployments","Terraform;PyTest;All"
-212,Fill,"To test PySpark logic, use __________.","pytest with Spark Session fixture",
+212,MCQ,Key CI/CD components for data pipelines?,"Infrastructure as code, unit tests, canary deployments",Terraform;PyTest;All
+212,Fill,"To test PySpark logic, use __________.",pytest with Spark Session fixture,
 212,TrueFalse,Data pipelines don't need unit tests.,FALSE,
 212,Scenario,Your PRs keep breaking transformations. Solution?,Add DataFrame validation tests,
 212,MCQ,Which framework tests PySpark best?,pytest,unittest;pytest;JUnit
-213,MCQ,"How to handle unstructured video data?","Store in S3, process with AWS Rekognition","Binary storage;Specialized processing;Both"
-213,Fill,"To extract video metadata, use __________.","AWS Rekognition Video",
+213,MCQ,How to handle unstructured video data?,"Store in S3, process with AWS Rekognition",Binary storage;Specialized processing;Both
+213,Fill,"To extract video metadata, use __________.",AWS Rekognition Video,
 213,TrueFalse,Videos should be stored in databases.,FALSE,
 213,Scenario,You need to analyze customer video uploads. Solution?,S3 + Rekognition pipeline,
 213,MCQ,Which service analyzes video content?,Rekognition,Transcribe;Rekognition;Comprehend
-214,MCQ,"Most common PySpark + PostgreSQL pattern?","JDBC reads/writes with optimized batch sizes","Connection management;Performance tuning;Both"
-214,Fill,"To prevent OOM when writing to Postgres, set __________.","batchSize parameter",
+214,MCQ,Most common PySpark + PostgreSQL pattern?,JDBC reads/writes with optimized batch sizes,Connection management;Performance tuning;Both
+214,Fill,"To prevent OOM when writing to Postgres, set __________.",batchSize parameter,
 214,TrueFalse,Spark can't write to PostgreSQL.,FALSE,
 214,Scenario,Your Spark job fails writing to RDS. Solution?,Tune batchSize + parallelism,
 214,MCQ,Which JDBC property improves write speed?,batchSize,fetchSize;batchSize;isolationLevel
-215,MCQ,"Social media DB design essentials?","Graph structure for relationships, time-series for activity","Data modeling;Access patterns;Both"
+215,MCQ,Social media DB design essentials?,"Graph structure for relationships, time-series for activity",Data modeling;Access patterns;Both
 215,Fill,"To optimize post-comment queries, use __________.","composite indexes on (post_id, created_at)",
 215,TrueFalse,Relational databases can't model social graphs.,FALSE,
 215,MCQ,Which database excels at social connections?,Neo4j,PostgreSQL;Neo4j;MongoDB
-216,MCQ,"How to optimize slow window functions?","Partition pruning + frame definition","Query planning;Function choice;Both"
-216,Fill,"To improve RANK() performance, add __________.","appropriate PARTITION BY clause",
+216,MCQ,How to optimize slow window functions?,Partition pruning + frame definition,Query planning;Function choice;Both
+216,Fill,"To improve RANK() performance, add __________.",appropriate PARTITION BY clause,
 216,TrueFalse,Window functions always scan entire tables.,FALSE,
 216,MCQ,Which window function clause impacts performance most?,PARTITION BY,ORDER BY;PARTITION BY;FRAME
