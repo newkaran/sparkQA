@@ -1,0 +1,76 @@
+id,type,question,answer,options
+1,MCQ,Does Spark handle storage directly?,No  it relies on external storage (e.g. HDFS S3),Yes;No;Only for small datasets
+1,Fill,Spark's __________ API allows reading/writing data from external storage.,DataFrameReader/DataFrameWriter,
+1,TrueFalse,Spark stores data permanently in its executors' memory.,FALSE,
+1,Scenario,"Your Spark job fails with ""No space left on device"". What's the first check?",Verify external storage (e.g., S3/HDFS) availability
+1,MCQ,Which storage systems integrate with Spark?,"HDFS, S3, ADLS, GCS",HDFS;S3;ADLS;GCS;All
+2,MCQ,What is the primary goal of partitioning in Spark?,Distribute data evenly across executors,Faster UI;Smaller logs;Even data distribution
+2,Fill,"For a 1TB dataset, use __________ partitions as a starting point.",200,
+2,TrueFalse,More partitions always improve performance.,FALSE,
+2,Scenario,Your Spark job has 10 tasks; 9 finish in 1min, 1 takes 1hr. How to fix?,Repartition to address skew
+2,Fill,Use __________ to inspect partition sizes.,df.rdd.mapPartitionsWithIndex(),
+3,MCQ,How to remove duplicates in PySpark?,dropDuplicates(),distinct();dropDuplicates();filter()
+3,Fill,"To remove nulls, use df.__________().",na.drop(),
+3,TrueFalse,df.distinct() is faster than dropDuplicates() for large datasets.,FALSE,
+3,Scenario,Duplicate records appear after a join. How to prevent?,Use distinct keys or dropDuplicates post-join,
+3,MCQ,Which method removes both duplicates AND nulls?,df.na.drop().dropDuplicates(),distinct();dropDuplicates();na.drop() combo
+4,MCQ,What causes OOM errors in Spark?,Insufficient executor memory,Small data;Insufficient memory;Too few partitions
+4,Fill,"To fix OOM, increase __________ or reduce __________.",executor memory;partition size,
+4,TrueFalse,Setting `spark.sql.shuffle.partitions=1000` always prevents OOM.,FALSE,
+4,Scenario,OOM occurs during a groupBy. How to optimize?,Increase partitions or use reduceByKey,
+4,MCQ,Which config parameter directly affects executor memory?,spark.executor.memory,spark.driver.memory;spark.executor.memory;spark.shuffle.partitions
+5,MCQ,What is the default broadcast join threshold in Spark?,10MB,1MB;10MB;100MB
+5,Fill,"To force a broadcast join, use __________.",broadcast() hint,
+5,TrueFalse,Broadcast joins work well for large tables.,FALSE,
+5,Scenario,Broadcast join fails due to table size. What's the alternative?,Sort-merge join with partitioning,
+5,MCQ,Which join type minimizes shuffling?,Broadcast join,Broadcast;Sort-merge;Nested loop
+6,MCQ,What is Delta Lake's primary advantage over Parquet?,ACID transactions,Faster reads;ACID;Smaller files
+6,Fill,"To enable schema evolution in Delta, set __________.",spark.databricks.delta.schema.autoMerge.enabled=true,
+6,TrueFalse,Delta Lake time travel requires manual version snapshots.,FALSE,
+6,Scenario,A pipeline breaks after a source schema change. How to fix Delta tables?,Use `MERGE` or autoMerge,
+6,MCQ,Which command shows Delta table history?,DESCRIBE HISTORY,DESCRIBE DETAIL;DESCRIBE HISTORY;SHOW VERSIONS
+7,MCQ,What is the purpose of Unity Catalog?,Data governance and access control,Job scheduling;Data governance;Cost tracking
+7,Fill,"To grant table access in Unity Catalog, use __________.",GRANT SELECT,
+7,TrueFalse,Unity Catalog only works with Delta tables.,FALSE,
+7,Scenario,A user can't query a table. How to debug in Unity Catalog?,Check GRANT permissions,
+7,MCQ,Which object is NOT managed by Unity Catalog?,Raw JSON files,Delta tables;SQL warehouses;Raw JSON files
+8,MCQ,How to trigger a Databricks notebook from another?,dbutils.notebook.run(),%run;dbutils.notebook.run();magic.run
+8,Fill,"To pass parameters between notebooks, use __________.",dbutils.widgets,
+8,TrueFalse,Notebook triggers work across different Databricks workspaces.,FALSE,
+8,Scenario,Notebook B must run only if Notebook A succeeds. How to implement?,Use try/except with dbutils.notebook.run(),
+8,MCQ,Which magic command runs a notebook inline?,%run,%execute;%run;%include
+9,MCQ,What is the replication factor in HDFS?,3 (by default),1;3;5
+9,Fill,HDFS __________ detects failed DataNodes via heartbeat.,NameNode,
+9,TrueFalse,HDFS replication guarantees zero data loss.,FALSE,
+9,Scenario,A DataNode fails. How does HDFS recover?,Replicate blocks from other nodes,
+9,MCQ,Which HDFS component stores metadata?,NameNode,DataNode;NameNode;YARN
+10,MCQ,What is Kafka's partition reassignment used for?,Rebalancing load across brokers,Adding topics;Rebalancing;Deleting data
+10,Fill,"To monitor Kafka lag, check __________.",consumer group offsets,
+10,TrueFalse,Kafka partitions are immutable after creation.,FALSE,
+10,Scenario,Consumer lag spikes. How to troubleshoot?,Check consumer throughput or add partitions,
+10,MCQ,Which tool manages Kafka partition reassignment?,kafka-reassign-partitions.sh,zookeeper;kafka-topics;kafka-reassign-partitions
+11,MCQ,What is the primary purpose of predicate pushdown in Spark?,Filter data at the storage level before loading,Reduce network I/O;Filter early;Both
+11,Fill,"To enable predicate pushdown for Parquet files, set __________.",spark.sql.parquet.filterPushdown=true,
+11,TrueFalse,Predicate pushdown works with all file formats (e.g., CSVJSON).,FALSE
+11,Scenario,Your query reads 100GB but only needs 1GB. How to optimize?,Use partition pruning + predicate pushdown,
+11,MCQ,Which operation benefits MOST from predicate pushdown?,SELECT with WHERE clause,GROUP BY;JOIN;SELECT with WHERE
+12,MCQ,What is the default shuffle partition count in Spark?,200,100;200;300
+12,Fill,"To reduce shuffle overhead, set __________.",spark.sql.shuffle.partitions,
+12,TrueFalse,Increasing shuffle partitions always improves performance.,FALSE,
+12,Scenario,A join operation takes hours due to shuffling. How to fix?,Optimize partition count + broadcast if possible,
+12,MCQ,Which config controls shuffle partition count?,spark.sql.shuffle.partitions,spark.shuffle.partitions;spark.sql.shuffle.partitions;spark.default.parallelism
+13,MCQ,What is the key advantage of Delta Lake over raw Parquet?,ACID transactions,Smaller files;ACID;Faster reads
+13,Fill,"To time-travel in Delta Lake, use __________.",VERSION AS OF,
+13,TrueFalse,Delta Lake supports batch and streaming writes.,TRUE,
+13,Scenario,A pipeline fails; how to revert Delta table to last good version?,Use `RESTORE TABLE TO VERSION`,
+13,MCQ,Which command lists Delta table versions?,DESCRIBE HISTORY,SHOW VERSIONS;DESCRIBE HISTORY;LIST SNAPSHOTS
+14,MCQ,How does Kafka partition reassignment help?,Balances load across brokers,Fixes lag;Balances load;Deletes data
+14,Fill,"To reassign Kafka partitions manually, use __________.",kafka-reassign-partitions.sh,
+14,TrueFalse,Kafka partitions can ONLY be increased, not decreased.,FALSE
+14,Scenario,Consumer lag spikes due to uneven partitions. Solution?,Reassign partitions + monitor,
+14,MCQ,Which tool monitors Kafka consumer lag?,kafka-consumer-groups.sh,kafka-topics;kafka-console-producer;kafka-consumer-groups
+15,MCQ,What is the difference between RANK() and ROW_NUMBER()?,RANK() leaves gaps for ties,ROW_NUMBER is unique;RANK leaves gaps;Both
+15,Fill,"To find the 3rd highest salary, use __________.",DENSE_RANK(),
+15,TrueFalse,WINDOW functions require PARTITION BY.,FALSE,
+15,Scenario,Query needs top 5 sales reps per region. How to implement?,Use `ROW_NUMBER() OVER(PARTITION BY region)`,
+15,MCQ,Which function assigns consecutive ranks without gaps?,DENSE_RANK(),RANK();DENSE_RANK();ROW_NUMBER()
