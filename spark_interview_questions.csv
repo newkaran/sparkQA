@@ -911,3 +911,73 @@ id,type,question,answer,options
 216,Fill,"To improve RANK() performance, add __________.",appropriate PARTITION BY clause,
 216,TrueFalse,Window functions always scan entire tables.,FALSE,
 216,MCQ,Which window function clause impacts performance most?,PARTITION BY,ORDER BY;PARTITION BY;FRAME
+217,MCQ,"Key considerations for scalable ETL pipelines?","Modular design, incremental processing, monitoring","Design patterns;Performance;All"
+217,Fill,"To handle data volume growth, implement __________.","partitioning strategy",
+217,TrueFalse,Monolithic pipelines scale better than modular ones.,FALSE,
+217,Scenario,Your nightly ETL job now takes 8hrs vs 2hrs last year. Solution?,Implement incremental loading,
+217,MCQ,Which technique reduces reprocessing needs?,Incremental loading,Full refresh;Incremental;Both
+218,MCQ,"How to optimize inventory pipeline performance?","Partition by date/sku, pre-aggregate metrics","Data organization;Query patterns;Both"
+218,Fill,"For fast stock-level queries, create __________.","materialized views",
+218,TrueFalse,Real-time inventory requires batch processing only.,FALSE,
+218,Scenario,Your inventory reports take hours to generate. Solution?,Pre-compute aggregates,
+218,MCQ,Which optimization helps most with inventory counts?,Columnstore indexes,Partitioning;Columnstore;Both
+219,MCQ,"How to optimize Spark joins practically?","Broadcast small tables, salt skewed keys","Join strategy;Skew handling;Both"
+219,Fill,"For skewed joins, use __________ technique.","salting",
+219,TrueFalse,Broadcast joins work well for equally large tables.,FALSE,
+219,Scenario,Your 100GB ↔ 80GB join fails with OOM. Solution?,Sort-merge join with partitioning,
+219,MCQ,Which join strategy handles skew best?,Sort-merge with skew handling,Broadcast;Sort-merge;Shuffle hash
+220,MCQ,"First step in production job failure?","Check logs, identify root cause","Triage;Debugging;Both"
+220,Fill,"To prevent recurring failures, implement __________.","automated alerts",
+220,TrueFalse,Immediate job restart is always the best solution.,FALSE,
+220,Scenario,Your daily pipeline failed at 3AM. Action plan?,1. Check logs 2. Fix 3. Test 4. Backfill,
+220,MCQ,Which tool provides Spark job diagnostics best?,Spark UI,Ganglia;Spark UI;CloudWatch
+221,MCQ,"Optimal query for top N per category?","Window functions with PARTITION BY","Ranking;Filtering;Both"
+221,Fill,"To get top 5 customers by revenue, use __________.","ROW_NUMBER() OVER(PARTITION BY category)",
+221,TrueFalse,GROUP BY is better than window functions for top-N.,FALSE,
+221,Scenario,Marketing needs top 10 products per region. Solution?,RANK() with PARTITION BY region,
+221,MCQ,Which window function excludes ties from top-N?,ROW_NUMBER(),RANK();ROW_NUMBER();DENSE_RANK()
+222,MCQ,"Key components of end-to-end ETL?","Extraction, validation, transformation, loading","Stages;Error handling;All"
+222,Fill,"To orchestrate multi-step ETL, use __________.","Airflow or Step Functions",
+222,TrueFalse,ELT is always better than ETL.,FALSE,
+222,Scenario,You need daily sales data processed by 6AM. Solution?,Design pipeline with SLA monitoring,
+222,MCQ,Which tool provides visual ETL monitoring?,Airflow,Spark UI;Airflow;CloudWatch
+223,MCQ,"How to optimize failing jobs?","Profile, identify bottleneck, redesign","Performance tuning;Resource allocation;Both"
+223,Fill,"To diagnose Spark job issues, check __________.","Spark UI stages tab",
+223,TrueFalse,Adding more nodes always fixes performance issues.,FALSE,
+223,Scenario,Your query fails with "executor lost" errors. Solution?,Tune memory fractions,
+223,MCQ,Which Spark config controls executor memory?,spark.executor.memory,spark.driver.memory;spark.executor.memory;spark.shuffle.memory
+224,MCQ,"How to troubleshoot OOM errors?","Check heap usage, optimize partitions, cache wisely","Memory analysis;Data sizing;Both"
+224,Fill,"To reduce executor memory pressure, __________.","increase partition count",
+224,TrueFalse,Garbage collection logs help diagnose OOMs.,TRUE,
+224,Scenario,Your job fails with Container killed by YARN. Solution?,1. Check GC logs 2. Tune memory,
+224,MCQ,Which metric indicates memory pressure?,GC time,CPU;Network;GC time
+225,MCQ,"How to save costs in data projects?","Right-size clusters, spot instances, incremental processing","Resource management;Scheduling;All"
+225,Fill,"For non-critical workloads, use __________ instances.","spot",
+225,TrueFalse,Reserved instances always save money.,FALSE,
+225,Scenario,Your monthly cloud bill jumped 200%. Solution?,Implement auto-scaling + spot,
+225,MCQ,Which AWS feature reduces compute costs most?,Spot instances,RI;Spot;On-demand
+226,MCQ,"How to design cloud migration for 1TB database?","Assessment, parallel loads, validation","Phased approach;Data integrity;All"
+226,Fill,"For minimal downtime, use __________ migration.","CDC (Change Data Capture)",
+226,TrueFalse,One big migration is safer than incremental.,FALSE,
+226,Scenario,Your Oracle DB needs Azure migration. Solution?,AWS DMS or Azure Data Factory,
+226,MCQ,Which tool handles schema conversion best?,AWS SCT,GSUTIL;AWS SCT;rsync
+227,MCQ,"Best practices for version control?","Branch strategies, code reviews, CI integration","Collaboration;Quality;Both"
+227,Fill,"To review pipeline changes, use __________.","pull requests",
+227,TrueFalse,Data pipelines don't need version control.,FALSE,
+227,Scenario,Your team keeps breaking production code. Solution?,Enforce PR reviews + testing,
+227,MCQ,Which branching model works for data teams?,GitFlow,Trunk;GitFlow;Both
+228,MCQ,"How to handle NameNode failure?","HA setup, metadata backups, failover","High availability;Disaster recovery;Both"
+228,Fill,"To prevent HDFS metadata loss, configure __________.","NameNode HA",
+228,TrueFalse,DataNodes can replace a failed NameNode.,FALSE,
+228,Scenario,Your HDFS cluster becomes inaccessible. Solution?,1. Check NameNode 2. Failover,
+228,MCQ,Which component stores HDFS metadata?,NameNode,DataNode;NameNode;JournalNode
+229,MCQ,"How to find job failure logs?","Cluster UI, driver logs, step functions history","Log locations;Debugging;Both"
+229,Fill,"For EMR jobs, check __________ logs first.","yarn",
+229,TrueFalse,Spark UI shows executor logs directly.,FALSE,
+229,Scenario,Your Glue job fails with vague error. Solution?,Check CloudWatch /tmp logs,
+229,MCQ,Which AWS service aggregates logs?,CloudWatch Logs,S3;CloudWatch;Kinesis
+230,MCQ,"Why partition large datasets?","Parallel processing, predicate pushdown","Performance;Cost;Both"
+230,Fill,"For time-series data, partition by __________.","date",
+230,TrueFalse,More partitions always improve performance.,FALSE,
+230,Scenario,Your 500GB query scans entire dataset. Solution?,Partition by query filter columns,
+230,MCQ,Which partitioning strategy helps joins?,Partition pruning,Z-order;Partition pruning;Both
