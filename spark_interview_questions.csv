@@ -911,5 +911,4 @@ id,type,question,answer,options
 216,MCQ,"How to optimize slow window functions?","Partition pruning + frame definition","Query planning;Function choice;Both"
 216,Fill,"To improve RANK() performance, add __________.","appropriate PARTITION BY clause",
 216,TrueFalse,Window functions always scan entire tables.,FALSE,
-216,Scenario,Your "top 10 posts" query takes minutes. Solution?,Optimize PARTITION BY + indexes,
 216,MCQ,Which window function clause impacts performance most?,PARTITION BY,ORDER BY;PARTITION BY;FRAME
