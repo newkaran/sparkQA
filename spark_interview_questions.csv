@@ -1118,9 +1118,6 @@ id,type,question,answer,options
 257,MCQ,Which Power BI feature helps validation?","DAX measures, bookmarks","Visuals;DAX;Both"
 301,MCQ,"How to find the second highest salary in SQL?","Use DENSE_RANK() or LIMIT/OFFSET","Ranking functions;Pagination;Both"
 301,Fill,"In PostgreSQL, use __________ for second highest salary.","LIMIT 1 OFFSET 1",
-301,TrueFalse,ORDER BY salary DESC LIMIT 1,1 works in all SQL dialects.,FALSE,
-301,Scenario,You need the second highest salary in a MySQL database. Solution?,SELECT salary FROM employees ORDER BY salary DESC LIMIT 1,1,
-301,MCQ,Which approach works across most databases?,DENSE_RANK(),LIMIT/OFFSET;TOP-N;DENSE_RANK()
 302,MCQ,"What are CTEs used for?","Modular query organization and recursion","Readability;Recursive queries;Both"
 302,Fill,"To reference a CTE multiple times, use __________.","WITH clause",
 302,TrueFalse,CTEs materialize results like temporary tables.,FALSE,
