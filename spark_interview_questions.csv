@@ -986,157 +986,131 @@ id,type,question,answer,options
 231,TrueFalse,Incremental CSV loads require full table scans.,FALSE,
 231,Scenario,Your CSV source has daily updates needing upserts. Solution?,MERGE with file timestamp filter,
 231,MCQ,Which Delta operation performs upserts?,MERGE,INSERT;UPDATE;MERGE
-
 232,MCQ,"Best ADF triggers for incremental loads?","Tumbling window, storage events","Schedule-based;Event-based;Both"
 232,Fill,"To trigger pipelines on new blob storage files, use __________.","storage event trigger",
 232,TrueFalse,Trigger runs always process all available data.,FALSE,
 232,Scenario,You need hourly processing of new files only. Solution?,Tumbling window trigger with lookback,
 232,MCQ,Which trigger type supports dependency chains?,Tumbling window,Event;Tumbling;Schedule
-
 233,MCQ,"Key Delta Lake vs Parquet difference?","ACID transactions, time travel","Features;Performance;Both"
 233,Fill,"To query previous table versions in Delta, use __________.","VERSION AS OF",
 233,TrueFalse,Parquet supports schema evolution natively.,FALSE,
 233,Scenario,You need to audit data changes over time. Solution?,Delta time travel,
 233,MCQ,Which format provides transaction logs?,Delta Lake,Parquet;Delta;ORC
-
 234,MCQ,"How to implement CDC in Delta Lake?","Enable Change Data Feed","Configuration;API usage;Both"
 234,Fill,"To read changes since version 5, set __________.","option('startingVersion', 5)",
 234,TrueFalse,CDC requires separate history tables.,FALSE,
 234,Scenario,You need to sync a data mart with Delta changes. Solution?,Use CDF streaming,
 234,MCQ,Which Delta feature tracks row-level changes?,Change Data Feed,Time travel;CDF;Both
-
 235,MCQ,"Essential data quality checks?","Null checks, value ranges, freshness","Validation types;Coverage;Both"
 235,Fill,"To validate email formats, use __________.","regex expressions",
 235,TrueFalse,Data quality checks should only run in production.,FALSE,
 235,Scenario,Your pipeline loads incorrect date formats. Solution?,Add format validation step,
 235,MCQ,Which tool provides built-in data profiling?,Great Expectations,ADF;Great Expectations;Spark
-
 236,MCQ,"How to use Synapse with ADF?","ADF orchestrates, Synapse transforms","Separation of concerns;Tool roles;Both"
 236,Fill,"To execute Synapse SQL from ADF, use __________.","Synapse Notebook activity",
 236,TrueFalse,ADF can directly query dedicated SQL pools.,TRUE,
 236,Scenario,You need coordinated ETL across services. Solution?,ADF pipeline with Synapse activities,
 236,MCQ,Which ADF activity runs Spark jobs?,Synapse Notebook,Copy;Synapse Notebook;Web
-
 237,MCQ,"Top Spark optimization techniques?","Partitioning, caching, broadcast joins","Execution;Resource;All"
 237,Fill,"To avoid shuffle, use __________ join for small tables.","broadcast",
 237,TrueFalse,DataFrame.cache() persists to disk by default.,FALSE,
 237,Scenario,Your 100GB ↔ 10MB join is slow. Solution?,Broadcast the smaller table,
 237,MCQ,Which config controls broadcast threshold?,spark.sql.autoBroadcastJoinThreshold,spark.broadcast.size;spark.sql.autoBroadcastJoinThreshold;spark.shuffle.partitions
-
 238,MCQ,"How to handle Spark OOM errors?","Increase partitions, tune memory","Memory management;Config;Both"
 238,Fill,"To prevent executor OOMs, increase __________.","spark.executor.memoryOverhead",
 238,TrueFalse,More executors always solve OOM issues.,FALSE,
 238,Scenario,Your job fails with "ExecutorLostFailure". Solution?,Tune memory fractions + partitions,
 238,MCQ,Which metric indicates memory pressure?,GC time,CPU;Network;GC time
-
 239,MCQ,"How to mitigate data skew?","Salting, repartitioning","Techniques;Monitoring;Both"
 239,Fill,"For skewed joins, add random __________.","salt keys",
 239,TrueFalse,Skew only affects sort operations.,FALSE,
 239,Scenario,One task takes hours while others finish. Solution?,Implement salting,
 239,MCQ,Which join strategy handles skew best?,Sort-merge with skew handling,Broadcast;Sort-merge;Shuffle
-
 240,MCQ,"Default broadcast join threshold?","10MB","10MB;100MB;1GB"
 240,Fill,"To override auto-broadcast, use __________.","broadcast() hint",
 240,TrueFalse,Broadcast threshold should exceed executor memory.,FALSE,
 240,Scenario,Your 15MB dimension table isn't broadcasting. Solution?,Increase threshold or force broadcast,
 240,MCQ,Which config enables broadcast joins?,spark.sql.autoBroadcastJoinThreshold,spark.broadcast;spark.sql.autoBroadcastJoinThreshold;spark.join.broadcast
-
 241,MCQ,"How to optimize non-broadcastable joins?","Partition pruning, bucketing","Techniques;Performance;Both"
 241,Fill,"For large table joins, use __________ strategy.","sort-merge join",
 241,TrueFalse,Nested loop joins work well for large tables.,FALSE,
 241,Scenario,Your 500GB ↔ 300GB join fails. Solution?,Sort-merge with partitioned join keys,
 241,MCQ,Which optimization complements large joins?,Z-ordering,Bloom filters;Z-ordering;Compression
-
 242,MCQ,"Delta Cache vs Spark cache?","Delta Cache is SSD-optimized, Spark cache is memory-first","Storage;Performance;Both"
 242,Fill,"To accelerate Delta reads, enable __________.","Delta Cache",
 242,TrueFalse,Delta Cache replaces Spark caching.,FALSE,
 242,Scenario,Your Delta queries are slower than Parquet. Solution?,Enable and size Delta Cache,
 242,MCQ,Which cache uses worker SSDs?,Delta Cache,Spark;Delta;Both
-
 243,MCQ,"What is data locality in Spark?","Prioritize task assignment to data location","Scheduling;Network;Both"
 243,Fill,"To minimize data transfer, set __________.","spark.locality.wait",
 243,TrueFalse,Data locality only matters for HDFS.,FALSE,
 243,Scenario,Your tasks show high "remote blocks read". Solution?,Tune locality wait times,
 243,MCQ,Which locality level is fastest?,PROCESS_LOCAL,NODE_LOCAL;PROCESS_LOCAL;RACK_LOCAL
-
 244,MCQ,"Stages/tasks for wide transformations?","1 stage per shuffle boundary, multiple tasks per partition","DAG;Parallelism;Both"
 244,Fill,"To view stage details, check __________.","Spark UI",
 244,TrueFalse,map() creates a new stage.,FALSE,
 244,Scenario,Your job shows 200 tasks in one stage. Solution?,Check partition count,
 244,MCQ,Which transformation always causes shuffles?,join(),map();filter();join()
-
 245,MCQ,"How to fetch API data with ADF?","Use Web activity or REST linked service","Methods;Authentication;Both"
 245,Fill,"To paginate API results, configure __________.","pagination rules",
 245,TrueFalse,ADF can only call HTTP GET endpoints.,FALSE,
 245,Scenario,Your API has OAuth2 authentication. Solution?,Configure OAuth2 in linked service,
 245,MCQ,Which ADF activity handles REST APIs?,Web,Copy;Web;Stored Procedure
-
 246,MCQ,"Types of ADF integration runtimes?","Azure, self-hosted, SSIS","Deployment;Location;All"
 246,Fill,"For VNET-connected resources, use __________ IR.","self-hosted",
 246,TrueFalse,AutoResolve IR works with on-premises data.,FALSE,
 246,Scenario,You need to access on-prem SQL Server. Solution?,Deploy self-hosted IR,
 246,MCQ,Which IR type is serverless?,Azure IR,Self-hosted;Azure;SSIS
-
 247,MCQ,"Mapping vs wrangling data flows?","Mapping: Spark-based, Wrangling: Power Query","Technology;User;Both"
 247,Fill,"For code-free transformations, use __________.","wrangling data flow",
 247,TrueFalse,Mapping data flows support Python.,FALSE,
 247,Scenario,Business analysts need to clean data. Solution?,Wrangling data flows,
 247,MCQ,Which data flow uses Spark clusters?,Mapping,Wrangling;Mapping;Both
-
 248,MCQ,"Best ADF pipeline optimizations?","Partition sources, parallel copies","Throughput;Design;Both"
 248,Fill,"To increase copy parallelism, adjust __________.","DIUs (Data Integration Units)",
 248,TrueFalse,Sequential activities always slow pipelines.,TRUE,
 248,Scenario,Your pipeline copies 500 files sequentially. Solution?,Implement fan-out pattern,
 248,MCQ,Which ADF pattern reduces job count?,Mapping data flows,Copy activity;Mapping data flows;ForEach
-
 249,MCQ,"How to use Delta Live Tables?","Declarative pipeline framework","Approach;Automation;Both"
 249,Fill,"To define a DLT pipeline, use __________.","Python or SQL notebooks",
 249,TrueFalse,DLT automatically handles retries.,TRUE,
 249,Scenario,You need reliable incremental processing. Solution?,Implement DLT with expectations,
 249,MCQ,Which DLT feature validates data?,Expectations,Assertions;Expectations;Tests
-
 250,MCQ,"CI/CD for Databricks/Synapse?","Infra as code, automated deployments","Process;Tools;Both"
 250,Fill,"To deploy Databricks assets, use __________.","Databricks CLI or REST API",
 250,TrueFalse,CI/CD is unnecessary for data pipelines.,FALSE,
 250,Scenario,Your team breaks production weekly. Solution?,Implement CI/CD with staging,
 250,MCQ,Which tool deploys Databricks best?,Azure DevOps,Jenkins;Azure DevOps;GitHub
-
 251,MCQ,"How to find consecutive numbers in SQL?","LAG()/LEAD() with difference check","Pattern;Window functions;Both"
 251,Fill,"To identify 3+ consecutive values, compare __________.","current vs previous rows",
 251,TrueFalse,ROW_NUMBER() alone solves this.,FALSE,
 251,Scenario,Find login attempts from same IP. Solution?,LAG() with IP comparison,
 251,MCQ,Which window functions detect sequences?,LAG()/LEAD(),RANK();LAG()/LEAD();NTILE()
-
 252,MCQ,"How to size cluster for 1TB processing?","~16-32 nodes, executor memory balance","Capacity;Performance;Both"
 252,Fill,"For memory-intensive workloads, prioritize __________.","executor memory over cores",
 252,TrueFalse,More nodes always process data faster.,FALSE,
 252,Scenario,Your 1TB job fails with OOMs. Solution?,Increase executor memory + partitions,
 252,MCQ,Which metric indicates under-provisioned clusters?,GC time,CPU;Network;GC time
-
 253,MCQ,"Key cluster config parameters?","executors, memory, shuffle partitions","Resource;Performance;All"
 253,Fill,"To control reduce-side parallelism, set __________.","spark.sql.shuffle.partitions",
 253,TrueFalse,More executors always improve speed.,FALSE,
 253,Scenario,Your job has 10/200 tasks complete. Solution?,Adjust partitions + executors,
 253,MCQ,Which config prevents small files?,spark.sql.shuffle.partitions,spark.executor.instances;spark.sql.shuffle.partitions;spark.driver.memory
-
 254,MCQ,"How to resolve small Delta files?","OPTIMIZE with ZORDER","Compaction;Partitioning;Both"
 254,Fill,"To compact small files, run __________.","OPTIMIZE table_name",
 254,TrueFalse,VACUUM solves small file issues.,FALSE,
 254,Scenario,Your Delta queries are slow due to 1000+ files. Solution?,Run OPTIMIZE + ZORDER,
 254,MCQ,Which command reorganizes Delta files?,OPTIMIZE,VACUUM;OPTIMIZE;REPAIR
-
 255,MCQ,"How to make pipelines robust?","Schema evolution, parameterization","Design;Maintenance;Both"
 255,Fill,"To handle new columns, enable __________.","schema autoMerge",
 255,TrueFalse,Pipelines should break on schema changes.,FALSE,
 255,Scenario,Source systems add columns frequently. Solution?,Implement schema evolution,
 255,MCQ,Which Delta feature handles schema changes?,autoMerge,OverwriteSchema;autoMerge;Manual DDL
-
 256,MCQ,"How to validate pipeline results?","Source-to-target comparison, statistical checks","Methods;Coverage;Both"
 256,Fill,"To verify no data loss, check __________.","row counts",
 256,TrueFalse,Validation should only test happy paths.,FALSE,
 256,Scenario,Your pipeline succeeds but has wrong totals. Solution?,Implement aggregate reconciliation,
 256,MCQ,Which validation is most comprehensive?,Statistical profiling,Null checks;Row counts;Statistical
-
 257,MCQ,"How to use Power BI for validation?","Build dashboards with source/target comparison","Visualization;Monitoring;Both"
 257,Fill,"To monitor data freshness, track __________.","load timestamps",
 257,TrueFalse,Power BI can directly validate schemas.,FALSE,
@@ -1147,103 +1121,86 @@ id,type,question,answer,options
 301,TrueFalse,ORDER BY salary DESC LIMIT 1,1 works in all SQL dialects.,FALSE,
 301,Scenario,You need the second highest salary in a MySQL database. Solution?,SELECT salary FROM employees ORDER BY salary DESC LIMIT 1,1,
 301,MCQ,Which approach works across most databases?,DENSE_RANK(),LIMIT/OFFSET;TOP-N;DENSE_RANK()
-
 302,MCQ,"What are CTEs used for?","Modular query organization and recursion","Readability;Recursive queries;Both"
 302,Fill,"To reference a CTE multiple times, use __________.","WITH clause",
 302,TrueFalse,CTEs materialize results like temporary tables.,FALSE,
 302,Scenario,Your complex query has repeated subqueries. Solution?,Refactor using CTEs,
 302,MCQ,Which SQL feature is similar to CTEs but materialized?,Temporary views,Subqueries;Temporary views;CTEs
-
 303,MCQ,"Difference between RANK() and ROW_NUMBER()?","RANK() leaves gaps for ties, ROW_NUMBER() is always sequential","Tie handling;Output;Both"
 303,Fill,"To assign unique row IDs regardless of ties, use __________.","ROW_NUMBER()",
 303,TrueFalse,RANK() produces contiguous numbers with ties.,FALSE,
 303,Scenario,You need pagination with consistent row numbering. Solution?,Use ROW_NUMBER(),
 303,MCQ,Which function handles ties without gaps?,DENSE_RANK(),RANK();ROW_NUMBER();DENSE_RANK()
-
 304,MCQ,"OLTP vs OLAP systems?","OLTP for transactions, OLAP for analytics","Workload;Schema;Both"
 304,Fill,"For reporting queries, use __________ system.","OLAP",
 304,TrueFalse,Star schemas are common in OLTP systems.,FALSE,
 304,Scenario,Your e-commerce app needs order processing. Solution?,OLTP database,
 304,MCQ,Which system uses denormalized schemas?,OLAP,OLTP;OLAP;Both
-
 305,MCQ,"Why are ACID properties important?","Ensure reliable transactions despite failures","Data integrity;Consistency;Both"
 305,Fill,"The 'I' in ACID stands for __________.","Isolation",
 305,TrueFalse,NoSQL databases never support ACID.,FALSE,
 305,Scenario,Your banking system must prevent overdrafts. Solution?,ACID-compliant database,
 305,MCQ,Which property ensures transactions complete fully?,Atomicity,Consistency;Atomicity;Durability
-
 306,MCQ,"HDFS architecture components?","NameNode (metadata), DataNode (storage)","Roles;Functions;Both"
 306,Fill,"For HDFS high availability, configure __________.","multiple NameNodes",
 306,TrueFalse,DataNodes store file metadata.,FALSE,
 306,Scenario,Your NameNode crashes. Impact?,Metadata becomes unavailable,
 306,MCQ,Which component manages block locations?,NameNode,DataNode;NameNode;Client
-
 307,MCQ,"Purpose of HDFS replication?","Fault tolerance through data duplication","Redundancy;Availability;Both"
 307,Fill,"The default replication factor is __________.","3",
 307,TrueFalse,Higher replication improves compute performance.,FALSE,
 307,Scenario,Your cluster has frequent disk failures. Solution?,Increase replication factor,
 307,MCQ,Which component handles replication?,NameNode,DataNode;NameNode;Client
-
 308,MCQ,"HDFS heartbeat mechanism?","DataNodes signal liveness to NameNode","Health monitoring;Block reporting;Both"
 308,Fill,"If a DataNode misses __________ heartbeats, it's marked dead.","10",
 308,TrueFalse,Heartbeats include block location updates.,TRUE,
 308,Scenario,Network issues cause false DataNode failures. Solution?,Adjust heartbeat timeout,
 308,MCQ,Which config controls heartbeat interval?,dfs.heartbeat.interval,dfs.namenode.interval;dfs.heartbeat.interval;dfs.datanode.timeout
-
 309,MCQ,"Spark client vs cluster mode?","Driver location (client=submission host, cluster=cluster)","Deployment;Resource;Both"
 309,Fill,"For production jobs, use __________ mode.","cluster",
 309,TrueFalse,Client mode is better when the driver machine is unreliable.,FALSE,
 309,Scenario,Your Spark job fails when laptop disconnects. Solution?,Use cluster mode,
 309,MCQ,Which mode provides better resource management?,Cluster mode,Client mode;Cluster mode;Local
-
 310,MCQ,"What is partition skew?","Uneven data distribution across partitions","Imbalance;Causes;Both"
 310,Fill,"To fix skewed joins, use __________ technique.","salting",
 310,TrueFalse,Skew only affects sort operations.,FALSE,
 310,Scenario,One task takes hours while others finish quickly. Solution?,Repartition or salt keys,
 310,MCQ,Which join strategy handles skew best?,Sort-merge with skew handling,Broadcast;Sort-merge;Shuffle
-
 311,MCQ,"Spark join types?","Inner, outer, left, right, cross","Syntax;Use cases;Both"
 311,Fill,"To find unmatched records, use __________ join.","anti",
 311,TrueFalse,Cross joins are memory-efficient.,FALSE,
 311,Scenario,You need customer orders including those without orders. Solution?,Left outer join,
 311,MCQ,Which join preserves all left table rows?,Left outer,Inner;Left outer;Right outer
-
 312,MCQ,"When to use broadcast join?","Small table fits in executor memory","Size;Performance;Both"
 312,Fill,"To force broadcast join, use __________ hint.","broadcast()",
 312,TrueFalse,Broadcast works well for large table joins.,FALSE,
 312,Scenario,Your 100GB ↔ 10MB join is slow. Solution?,Broadcast the smaller table,
 312,MCQ,Which config controls broadcast threshold?,spark.sql.autoBroadcastJoinThreshold,spark.broadcast.size;spark.sql.autoBroadcastJoinThreshold;spark.shuffle.partitions
-
 313,MCQ,"What causes shuffling in Spark?","Data redistribution between stages/partitions","Network I/O;Stage boundaries;Both"
 313,Fill,"To reduce shuffle size, use __________.","reduceByKey() instead of groupByKey()",
 313,TrueFalse,map() operations cause shuffling.,FALSE,
 313,Scenario,Your job spends 80% time in shuffling. Solution?,Minimize wide transformations,
 313,MCQ,Which operation avoids shuffles?,mapPartitions(),join();mapPartitions();reduceByKey()
-
 314,MCQ,"coalesce() vs repartition()?","coalesce minimizes shuffles, repartition guarantees partition count","Shuffle behavior;Use cases;Both"
 314,Fill,"To reduce partitions without full shuffle, use __________.","coalesce()",
 314,TrueFalse,repartition() always increases partition count.,FALSE,
 314,Scenario,Your DataFrame has 1000 uneven partitions. Solution?,repartition(200),
 314,MCQ,Which operation performs full shuffle?,repartition(),coalesce();repartition();both
-
 315,MCQ,"Top Spark optimizations?","Partitioning, caching, broadcast joins","Execution;Resource;All"
 315,Fill,"To cache a DataFrame in memory only, use __________.","persist(MEMORY_ONLY)",
 315,TrueFalse,DataFrame.cache() persists to disk by default.,FALSE,
 315,Scenario,Your iterative algorithm re-reads input 10x. Solution?,Cache the input DataFrame,
 315,MCQ,Which optimization minimizes disk I/O?,Caching,Partitioning;Caching;Compression
-
 316,MCQ,"How to append to a linked list?","Traverse to end, update tail.next","Algorithm;Pointers;Both"
 316,Fill,"To add node X at the end: tail.next = __________.","X",
 316,TrueFalse,Appending to a linked list is O(1) with tail pointer.,TRUE,
 316,Scenario,Your linked list append is O(n). How to optimize?,Maintain tail pointer,
 316,MCQ,What's the time complexity of appending with tail pointer?,O(1),O(n);O(1);O(log n)
-
 317,MCQ,"Circular vs singly linked list?","Circular: tail points to head","Structure;Traversal;Both"
 317,Fill,"To detect a circular list, use __________ algorithm.","Floyd's cycle-finding",
 317,TrueFalse,Circular lists can't be traversed fully.,FALSE,
 317,Scenario,You need continuous round-robin scheduling. Solution?,Use circular linked list,
 317,MCQ,Which list type has no null pointers?,Circular,Singly;Circular;Both
-
 318,MCQ,"Key DSA for data engineering?","Hash tables, trees, graphs, sorting","Data structures;Algorithms;Both"
 318,Fill,"For partition pruning, understanding __________ helps.","tree traversal",
 318,TrueFalse,Graph algorithms are irrelevant to data engineering.,FALSE,
@@ -1254,103 +1211,86 @@ id,type,question,answer,options
 401,TrueFalse,JSON is more efficient than Parquet for analytical workloads.,FALSE,
 401,Scenario,Your analytics queries need fast column scans. Solution?,Store data in Parquet,
 401,MCQ,Which format provides predicate pushdown?,Parquet,CSV;JSON;Parquet
-
 402,MCQ,"Difference between managed and external tables?","Managed tables drop data on deletion, external tables don't","Data lifecycle;Storage control;Both"
 402,Fill,"To share files between Spark/Hive, create __________ table.","external",
 402,TrueFalse,Managed tables are always preferable.,FALSE,
 402,Scenario,You need tables accessible to both Spark and Hive. Solution?,External tables with shared metastore,
 402,MCQ,Which table type controls both metadata and files?,Managed,External;Managed;Neither
-
 403,MCQ,"Why prefer Parquet for big data?","Columnar storage, compression, predicate pushdown","Performance;Storage;All"
 403,Fill,"Parquet's __________ encoding improves compression.","dictionary",
 403,TrueFalse,Parquet is row-oriented like CSV.,FALSE,
 403,Scenario,Your 10TB dataset has slow analytical queries. Solution?,Convert to Parquet + partition,
 403,MCQ,Which Parquet feature reduces I/O?,Column pruning,Row groups;Column pruning;Compression
-
 404,MCQ,"HDFS architecture purpose?","Distributed storage with horizontal scaling","Fault tolerance;Scalability;Both"
 404,Fill,"To add capacity to HDFS, add more __________.","DataNodes",
 404,TrueFalse,HDFS scales vertically by adding bigger nodes.,FALSE,
 404,Scenario,Your data grows from 1TB to 50TB. Solution?,Scale HDFS horizontally,
 404,MCQ,Which HDFS component manages metadata?,NameNode,DataNode;NameNode;JournalNode
-
 405,MCQ,"NameNode vs DataNode roles?","NameNode: metadata, DataNode: block storage","Functions;Responsibilities;Both"
 405,Fill,"For high availability, configure __________ NameNodes.","multiple",
 405,TrueFalse,DataNodes serve file metadata to clients.,FALSE,
 405,Scenario,Your NameNode crashes. Impact?,Metadata becomes unavailable,
 405,MCQ,Which component stores actual file data?,DataNode,NameNode;DataNode;Client
-
 406,MCQ,"HDFS heartbeat purpose?","DataNode liveness monitoring","Health check;Block reporting;Both"
 406,Fill,"If a DataNode misses __________ heartbeats, it's marked dead.","10",
 406,TrueFalse,Heartbeats transfer file data.,FALSE,
 406,Scenario,Network issues cause false DataNode failures. Solution?,Adjust heartbeat timeout,
 406,MCQ,Which config controls heartbeat interval?,dfs.heartbeat.interval,dfs.block.size;dfs.heartbeat.interval;dfs.timeout
-
 407,MCQ,"HDFS replication factor role?","Fault tolerance through data duplication","Redundancy;Availability;Both"
 407,Fill,"The default replication factor is __________.","3",
 407,TrueFalse,Replication improves compute performance.,FALSE,
 407,Scenario,Your cluster has frequent disk failures. Solution?,Increase replication factor,
 407,MCQ,Which component manages replication?,NameNode,DataNode;NameNode;Client
-
 408,MCQ,"What happens when DataNode fails?","NameNode replicates under-replicated blocks","Recovery process;Metadata;Both"
 408,Fill,"To check under-replicated blocks, use __________.","hdfs dfsadmin -report",
 408,TrueFalse,Failed DataNodes require manual metadata updates.,FALSE,
 408,Scenario,5% of your DataNodes fail simultaneously. Solution?,NameNode auto-triggers replication,
 408,MCQ,Which process handles failed DataNodes?,NameNode recovery,Manual intervention;NameNode;YARN
-
 409,MCQ,"Spark client vs cluster mode?","Driver location (submission host vs cluster)","Deployment;Resource;Both"
 409,Fill,"For production jobs, use __________ mode.","cluster",
 409,TrueFalse,Client mode is better when the driver machine is unreliable.,FALSE,
 409,Scenario,Your Spark job fails when laptop disconnects. Solution?,Use cluster mode,
 409,MCQ,Which mode provides better resource management?,Cluster mode,Client mode;Cluster mode;Local
-
 410,MCQ,"What is partition skew?","Uneven data distribution across partitions","Imbalance;Causes;Both"
 410,Fill,"To fix skewed joins, use __________ technique.","salting",
 410,TrueFalse,Skew only affects sorting operations.,FALSE,
 410,Scenario,One task takes hours while others finish quickly. Solution?,Implement salting,
 410,MCQ,Which join strategy handles skew best?,Sort-merge with skew handling,Broadcast;Sort-merge;Shuffle
-
 411,MCQ,"Spark join types?","Inner, outer, left, right, cross","Syntax;Use cases;Both"
 411,Fill,"To find records without matches, use __________ join.","anti",
 411,TrueFalse,Cross joins are memory-efficient.,FALSE,
 411,Scenario,You need all customers including those without orders. Solution?,Left outer join,
 411,MCQ,Which join preserves all right table rows?,Right outer,Inner;Left outer;Right outer
-
 412,MCQ,"When to use broadcast join?","Small table fits in executor memory","Size;Performance;Both"
 412,Fill,"To force broadcast join, use __________ hint.","broadcast()",
 412,TrueFalse,Broadcast works well for large table joins.,FALSE,
 412,Scenario,Your 100GB ↔ 10MB join is slow. Solution?,Broadcast the smaller table,
 412,MCQ,Which config controls broadcast threshold?,spark.sql.autoBroadcastJoinThreshold,spark.broadcast.size;spark.sql.autoBroadcastJoinThreshold;spark.shuffle.partitions
-
 413,MCQ,"What causes shuffling?","Data redistribution between stages","Network I/O;Stage boundaries;Both"
 413,Fill,"To minimize shuffle, use __________ instead of groupByKey.","reduceByKey",
 413,TrueFalse,map() operations cause shuffling.,FALSE,
 413,Scenario,Your job spends 80% time shuffling. Solution?,Optimize wide transformations,
 413,MCQ,Which operation avoids shuffles?,mapPartitions(),join();mapPartitions();reduceByKey()
-
 414,MCQ,"repartition() vs coalesce()?","repartition does full shuffle, coalesce minimizes shuffles","Shuffle behavior;Use cases;Both"
 414,Fill,"To reduce partitions without full shuffle, use __________.","coalesce",
 414,TrueFalse,repartition() always increases partition count.,FALSE,
 414,Scenario,Your DataFrame has 1000 uneven partitions. Solution?,repartition(200),
 414,MCQ,Which operation performs full shuffle?,repartition(),coalesce();repartition();both
-
 415,MCQ,"Top Spark optimizations?","Partitioning, caching, broadcast joins","Execution;Resource;All"
 415,Fill,"To cache a DataFrame in memory only, use __________.","persist(MEMORY_ONLY)",
 415,TrueFalse,DataFrame.cache() persists to disk by default.,FALSE,
 415,Scenario,Your iterative algorithm re-reads input 10x. Solution?,Cache the input DataFrame,
 415,MCQ,Which optimization minimizes disk I/O?,Caching,Partitioning;Caching;Compression
-
 416,MCQ,"How to find second highest salary?","DENSE_RANK() or LIMIT/OFFSET","Ranking functions;Pagination;Both"
 416,Fill,"In MySQL, use __________ for second highest.","LIMIT 1,1",
 416,TrueFalse,ROW_NUMBER() alone solves this.,FALSE,
 416,Scenario,You need the second highest salary in PostgreSQL. Solution?,Use DENSE_RANK() or LIMIT 1 OFFSET 1,
 416,MCQ,Which approach works across most databases?,DENSE_RANK(),LIMIT/OFFSET;TOP-N;DENSE_RANK()
-
 417,MCQ,"Key advanced SQL concepts?","CTEs, window functions, pivoting","Features;Techniques;All"
 417,Fill,"For recursive queries, use __________.","CTEs",
 417,TrueFalse,Window functions require GROUP BY.,FALSE,
 417,Scenario,You need running totals without subqueries. Solution?,Use window functions,
 417,MCQ,Which SQL feature enables modular queries?,CTEs,Subqueries;CTEs;Temporary tables
-
 418,MCQ,"Common Hive file formats?","Parquet, ORC, JSON, CSV","Types;Performance;All"
 418,Fill,"For best Hive compression, use __________.","ORC",
 418,TrueFalse,CSV is optimal for analytical queries.,FALSE,
