@@ -907,7 +907,6 @@ id,type,question,answer,options
 215,MCQ,"Social media DB design essentials?","Graph structure for relationships, time-series for activity","Data modeling;Access patterns;Both"
 215,Fill,"To optimize post-comment queries, use __________.","composite indexes on (post_id, created_at)",
 215,TrueFalse,Relational databases can't model social graphs.,FALSE,
-215,Scenario,Your platform needs fast "friends of friends" queries. Solution?,Graph database or adjacency lists,
 215,MCQ,Which database excels at social connections?,Neo4j,PostgreSQL;Neo4j;MongoDB
 216,MCQ,"How to optimize slow window functions?","Partition pruning + frame definition","Query planning;Function choice;Both"
 216,Fill,"To improve RANK() performance, add __________.","appropriate PARTITION BY clause",
