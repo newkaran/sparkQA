@@ -513,7 +513,6 @@ id,type,question,answer,options
 103,Fill,"In medallion architecture, the __________ layer contains business-ready data.","gold",
 103,TrueFalse,Bronze layer should always be query-optimized.,FALSE,
 103,Scenario,Your raw data needs progressive cleaning and enrichment. Solution?,Implement multi-hop architecture,
-103,MCQ,Which architecture separates raw, cleansed, and enriched data?,Medallion (bronze/silver/gold),Data vault;Medallion;Star schema
 104,MCQ,What is the purpose of Delta Lake's constraint notifications?,Alert on constraint violations without failing writes,Quality monitoring;Non-blocking validation;Both
 104,Fill,"To collect constraint violations without failing jobs, set __________.","spark.databricks.delta.constraints.allowUnenforcedNonnull=true",
 104,TrueFalse,Constraint notifications require Unity Catalog.,FALSE,
